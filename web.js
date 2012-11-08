@@ -11,7 +11,7 @@ var sys = require('sys'),
     
 var phone = client.getPhoneNumber('16464309130');
 
-
+*/
 phone.setup(function() {
 
     phone.on('incomingSms', function(reqParams, res) {
@@ -24,7 +24,7 @@ phone.setup(function() {
     });
     
 });
-*/
+
 
 var app = express.createServer(express.logger());
 
