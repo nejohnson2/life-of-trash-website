@@ -1,5 +1,11 @@
 var express = require('express');
 var ejs = require('ejs');
+var Twilio = require('twilio-js');
+
+Twilio.AccountSid = 'ACad716cc4da934be6ad19bf5353312248';
+Twilio.AuthToken = '3af91684fa2d040f587bf96955cffd82';
+
+/*
 
 var ACCOUNT_SID = 'ACad716cc4da934be6ad19bf5353312248';
 var AUTH_TOKEN = '3af91684fa2d040f587bf96955cffd82';
@@ -10,6 +16,7 @@ var sys = require('sys'),
     client = new TwilioClient(ACCOUNT_SID, AUTH_TOKEN, MY_HOSTNAME);
     
 var phone = client.getPhoneNumber('+16464309130');
+*/
 
 /*
 phone.setup(function() {
