@@ -1,10 +1,10 @@
 var express = require('express');
 var ejs = require('ejs');
-/*
+
 var ACCOUNT_SID = 'ACad716cc4da934be6ad19bf5353312248';
 var AUTH_TOKEN = '3af91684fa2d040f587bf96955cffd82';
 var MY_HOSTNAME = 'dog-simulatro-master';
-
+/*
 var sys = require('sys'),
     TwilioClient = require('twilio').Client,
     client = new TwilioClient(ACCOUNT_SID, AUTH_TOKEN, MY_HOSTNAME);
