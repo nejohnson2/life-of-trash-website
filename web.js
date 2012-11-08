@@ -71,8 +71,13 @@ app.configure(function() {
 });
 /*********** END SERVER CONFIGURATION *****************/
 
-app.get('/', function(request, response) {
+Twilio::SMS.create({
+	to: '+17654307001', from: '+16464309130',
+	body: 'Hello nick.  how are you?'
+})
 
+app.get('/', function(request, response) {
+	
 	response.send("uh oh, can't find that post");
 });
 
