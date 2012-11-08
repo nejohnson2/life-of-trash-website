@@ -9,7 +9,7 @@ var sys = require('sys'),
     TwilioClient = require('twilio').Client,
     client = new TwilioClient(ACCOUNT_SID, AUTH_TOKEN, MY_HOSTNAME);
     
-var phone = client.getPhoneNumber('+16464309130');
+var phone = client.getPhoneNumber('16464309130');
 
 phone.setup(function() {
 
