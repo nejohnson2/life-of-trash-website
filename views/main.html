@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="span4"><hr /></div>
+		<div class="span4">
+		<span class="small-title">choose your</span><br />
+                    <span class="large-title">BREED</span>
+                </div>
+	<div class="span4"><hr /></div>
+</div>
+
+<div class="row" id="doglist">
+         	<% for(i=0; i<thumbImages.length; i++) { %>
+                    <div class="dogicon" id="<%= dogs[i] %>">
+                    	<a href="<%= dogurl[i] %>">
+                    	<img src="/img/<%= thumbImages[i] %>" alt="<%= thumbImages[i] %>"><br />
+                    	<span><%= dogs[i] %></span>
+                    	</a>
+                    </div>
+            <% } %>
+</div>
+
+<hr />

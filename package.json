@@ -2,7 +2,9 @@
   "name": "recycle-blog",
   "version": "0.0.1",
   "dependencies": {
-    "express": "2.5.6"
+    "express": "2.5.6",
+    "ejs" : "latest",
+    "twilio" : "latest"
   },
     "engines": {
     "node": "0.8.x",
