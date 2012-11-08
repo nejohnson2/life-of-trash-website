@@ -1,87 +1,26 @@
-var express = require('express');
-var ejs = require('ejs');
-var Twilio = require('twilio-js');
-
-Twilio.AccountSid = 'ACad716cc4da934be6ad19bf5353312248';
-Twilio.AuthToken = '3af91684fa2d040f587bf96955cffd82';
-
-/*
-
-var ACCOUNT_SID = 'ACad716cc4da934be6ad19bf5353312248';
-var AUTH_TOKEN = '3af91684fa2d040f587bf96955cffd82';
-var MY_HOSTNAME = 'http://cryptic-escarpment-1202.herokuapp.com';
-
-var sys = require('sys'),
-    TwilioClient = require('twilio').Client,
-    client = new TwilioClient(ACCOUNT_SID, AUTH_TOKEN, MY_HOSTNAME);
-    
-var phone = client.getPhoneNumber('+16464309130');
-*/
-
-/*
-phone.setup(function() {
-
-    phone.on('incomingSms', function(reqParams, res) {
-
-        // As above, reqParams contains the Twilio request parameters.
-        // Res is a Twiml.Response object.
-
-        console.log('Received incoming SMS with text: ' + reqParams.Body);
-        console.log('From: ' + reqParams.From);
-    });
-    
-});
-*/
-
-var app = express.createServer(express.logger());
-
-/*********** SERVER CONFIGURATION *****************/
-app.configure(function() {
-    
-    /*********************************************************************************
-        Configure the template engine
-        We will use EJS (Embedded JavaScript) https://github.com/visionmedia/ejs
-        
-        Using templates keeps your logic and code separate from your HTML.
-        We will render the html templates as needed by passing in the necessary data.
-    *********************************************************************************/
-
-    app.set('view engine','ejs');  // use the EJS node module
-    app.set('views',__dirname+ '/views'); // use /views as template directory
-    app.set('view options',{layout:true}); // use /views/layout.html to manage your main header/footer wrapping template
-    app.register('html',require('ejs')); //use .html files in /views
-
-    /******************************************************************
-        The /static folder will hold all css, js and image assets.
-        These files are static meaning they will not be used by
-        NodeJS directly. 
-        
-        In your html template you will reference these assets
-        as yourdomain.heroku.com/img/cats.gif or yourdomain.heroku.com/js/script.js
-    ******************************************************************/
-    app.use(express.static(__dirname + '/static'));
-    
-    //parse any http form post
-    app.use(express.bodyParser());
-    
-    /**** Turn on some debugging tools ****/
-    app.use(express.logger());
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-
-});
-/*********** END SERVER CONFIGURATION *****************/
-
-Twilio::SMS.create({
-	to: '+17654307001', from: '+16464309130',
-	body: 'Hello nick.  how are you?'
-})
+var sys = require('sys');
+var express = require('express'),
+	app = express.createServer();
 
 app.get('/', function(request, response) {
 	
 	response.send("uh oh, can't find that post");
 });
 
-var port = process.env.PORT || 5000;
+// Create a function to handle our incoming SMS requests (POST request)
+app.post('/incoming', function(req, res) {
+  // Extract the From and Body values from the POST data
+  var message = req.body.Body;
+  var from = req.body.From;
+  sys.log('From: ' + from + ', Message: ' + message);
+  
+  // Return sender a very nice message
+  // twiML to be executed when SMS is received
+  var twiml = '<Response><Sms>HA! HA! This response is auto generated.</Sms></Response>';
+  res.send(twiml, {'Content-Type':'text/xml'}, 200);
+});
+
+var port = process.env.PORT || PORT;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });

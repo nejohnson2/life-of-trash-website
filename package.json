@@ -6,7 +6,8 @@
     "ejs" : "latest",
     "twilio" : "0.4.0",
     "twilio-heroku" : "latest",
-    "twilio-js" : "latest"
+    "twilio-js" : "latest",
+    "twilio-api" : "latest"
   },
     "engines": {
     "node": "0.8.x",
