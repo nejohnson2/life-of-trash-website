@@ -3,17 +3,17 @@ var ejs = require('ejs');
 
 var ACCOUNT_SID = 'ACad716cc4da934be6ad19bf5353312248';
 var AUTH_TOKEN = '3af91684fa2d040f587bf96955cffd82';
-var MY_HOSTNAME = 'dog-simulatro-master';
+var MY_HOSTNAME = 'http://cryptic-escarpment-1202.herokuapp.com';
 
-/*
 var sys = require('sys'),
     TwilioClient = require('twilio').Client,
     client = new TwilioClient(ACCOUNT_SID, AUTH_TOKEN, MY_HOSTNAME);
     
-*/
+/*
 var sys = require('sys'),
     TwilioClient = require('twilio').Client,
-    client = new TwilioClient('ACad716cc4da934be6ad19bf5353312248', '3af91684fa2d040f587bf96955cffd82', 'dog-simulatro-master');
+    client = new TwilioClient('ACad716cc4da934be6ad19bf5353312248', '3af91684fa2d040f587bf96955cffd82', 'http://cryptic-escarpment-1202.herokuapp.com');
+*/
 /*    
 var phone = client.getPhoneNumber('16464309130');
 
