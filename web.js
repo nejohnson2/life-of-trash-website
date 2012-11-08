@@ -5,9 +5,15 @@ var ACCOUNT_SID = 'ACad716cc4da934be6ad19bf5353312248';
 var AUTH_TOKEN = '3af91684fa2d040f587bf96955cffd82';
 var MY_HOSTNAME = 'dog-simulatro-master';
 
+/*
 var sys = require('sys'),
     TwilioClient = require('twilio').Client,
     client = new TwilioClient(ACCOUNT_SID, AUTH_TOKEN, MY_HOSTNAME);
+    
+*/
+var sys = require('sys'),
+    TwilioClient = require('twilio').Client,
+    client = new TwilioClient('ACad716cc4da934be6ad19bf5353312248', '3af91684fa2d040f587bf96955cffd82', 'dog-simulatro-master');
 /*    
 var phone = client.getPhoneNumber('16464309130');
 
