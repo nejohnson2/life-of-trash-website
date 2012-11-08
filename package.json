@@ -5,7 +5,8 @@
     "express": "2.5.6",
     "ejs" : "latest",
     "twilio" : "0.4.0",
-    "twilio-heroku" : "latest"
+    "twilio-heroku" : "latest",
+    "twilio-js" : "latest"
   },
     "engines": {
     "node": "0.8.x",
