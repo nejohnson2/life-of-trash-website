@@ -20,10 +20,10 @@ var sys = require('sys'),
 var TwilioClient = require('twilio').Client,
     client = new TwilioClient('ACad716cc4da934be6ad19bf5353312248', '3af91684fa2d040f587bf96955cffd82', 'http://cryptic-escarpment-1202.herokuapp.com');
 */
-/*    
-var phone = client.getPhoneNumber('16464309130');
+    
+var phone = client.getPhoneNumber('+16464309130');
 
-
+/*
 phone.setup(function() {
 
     phone.on('incomingSms', function(reqParams, res) {
