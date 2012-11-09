@@ -60,7 +60,25 @@ app.post('/incoming', function(req, res) {
   var body = req.params.body;
   // Return sender a very nice message
   // twiML to be executed when SMS is received
-  var twiml = '<Response><Sms>' + body + '  HA! HA! This response is auto generated.</Sms></Response>';
+//  var twiml = '<Response><Sms>' + body + '  HA! HA! This response is auto generated.</Sms></Response>';
+  
+  var Twilio = '<TwilioResponse>
+					<SMSMessage>
+					 <Sid>SM0a1f160c24341e1d01acffcefde8afd9</Sid>
+					 <DateCreated>Fri, 09 Nov 2012 00:29:14 +0000</DateCreated>
+					 <DateUpdated>Fri, 09 Nov 2012 00:29:14 +0000</DateUpdated>
+					 <DateSent/>
+					 <AccountSid>ACad716cc4da934be6ad19bf5353312248</AccountSid>
+					 <To>+17654307001</To>
+					 <From>+16464309130</From>
+					 <Body>' + body + '</Body>
+					 <Status>queued</Status>
+					 <Direction>outbound-api</Direction>
+					 <ApiVersion>2010-04-01</ApiVersion>
+					 <Price/>
+					 <Uri>/2010-04-01/Accounts/ACad716cc4da934be6ad19bf5353312248/SMS/Messages/SM0a1f160c24341e1d01acffcefde8afd9.xml</Uri>
+					</SMSMessage>
+					</TwilioResponse>';
   res.send(twiml, {'Content-Type':'text/xml'}, 200);
 });
 
