@@ -22,8 +22,8 @@
                    <a href="/"><h1><%= pageTitle %></h1></a>
                 <% } %>
             </div>
-            <form action="/incoming", method="POST">
-	
+            <!-- <form action="https://api.twilio.com/2010-04-01/Accounts/ACad716cc4da934be6ad19bf5353312248/SMS/Messages.json", method="POST"> -->
+            <form action="/incoming" method="post">
 			    <legend>Legend</legend>
 			    <label>Label name</label>
 			    <input type="text" name="body" placeholder="Type something…">
