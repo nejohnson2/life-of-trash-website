@@ -1,4 +1,5 @@
 var sys = require('sys');
+var ejs = require('ejs');
 var express = require('express'),
 	app = express.createServer();
 
@@ -43,6 +44,12 @@ app.get('/', function(request, response) {
 	response.send("uh oh, can't find that post");
 });
 
+
+app.get('/incoming', function(request, response) {
+		
+	response.render("layout.html");
+});
+
 // Create a function to handle our incoming SMS requests (POST request)
 app.post('/incoming', function(req, res) {
   // Extract the From and Body values from the POST data
@@ -50,13 +57,14 @@ app.post('/incoming', function(req, res) {
   var from = req.body.From;
   sys.log('From: ' + from + ', Message: ' + message);
   
+  var body = req.params.body;
   // Return sender a very nice message
   // twiML to be executed when SMS is received
-  var twiml = '<Response><Sms>HA! HA! This response is auto generated.</Sms></Response>';
+  var twiml = '<Response><Sms>' + body + '  HA! HA! This response is auto generated.</Sms></Response>';
   res.send(twiml, {'Content-Type':'text/xml'}, 200);
 });
 
-var port = process.env.PORT || PORT;
+var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });

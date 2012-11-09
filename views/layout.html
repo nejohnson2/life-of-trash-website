@@ -22,13 +22,14 @@
                    <a href="/"><h1><%= pageTitle %></h1></a>
                 <% } %>
             </div>
-            
+            <form action="/incoming", method="POST">
+	
+			    <legend>Legend</legend>
+			    <label>Label name</label>
+			    <input type="text" name="body" placeholder="Type something…">
+			    <button type="submit" class="btn">Submit</button>
 
-<!--
-            <div class="content">
-                <%- body %>
-            </div>
--->
+			</form>            	
 
 
         </div>
