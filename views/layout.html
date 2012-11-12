@@ -1,10 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>
         <% if (typeof pageTitle != "undefined") { %>
            <%= pageTitle %>
         <% } else { %>
-            Recycle Blog
+            NYC Trash Blog
         <% } %>
         </title>
         <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -13,24 +14,32 @@
     </head>
 
     <body>
-
         <div class="container">
-
-
-            <div class="header">
-                <% if (typeof pageTitle != "undefined") { %>
-                   <a href="/"><h1><%= pageTitle %></h1></a>
-                <% } %>
-            </div>
-            <!-- <form action="https://api.twilio.com/2010-04-01/Accounts/ACad716cc4da934be6ad19bf5353312248/SMS/Messages.json", method="POST"> -->
-            <form action="/incoming" method="post">
-			    <legend>Legend</legend>
-			    <label>Label name</label>
-			    <input type="text" name="body" placeholder="Type something…">
-			    <button type="submit" class="btn">Submit</button>
-
-			</form>            	
-
+            
+           <div class="navbar">
+			  <div class="navbar-inner">
+			    <a class="brand" href="/">Home</a>
+			    <ul class="nav">
+			      <li class="active"><a href="/info">Info</a></li>
+			      <li><a href="/experience">Experience</a></li>
+			      <li><a href="/about">About</a></li>
+			    </ul>
+			  </div>
+		   </div>  
+			  
+		   <div class="hero-unit">
+			  <h1>NYC Trash Blog</h1>
+			  <p>Where does your trash go?</p>
+			  <p>
+			    <a href="/new-project" class="btn btn-primary btn-large">
+			      Share Experience
+			    </a>
+			  </p>
+		   </div> 
+			            	
+		    <div class="">
+               <%- body %>
+     	  	</div>
 
         </div>
 
@@ -40,6 +49,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	    <script src="http://code.jquery.com/jquery-latest.js"></script>
 	    <script src="js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     </body>
     
 </html>

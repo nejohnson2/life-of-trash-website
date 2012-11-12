@@ -1,7 +1,7 @@
 var sys = require('sys');
 var ejs = require('ejs');
 var express = require('express'),
-	app = express.createServer();
+	app = express.createServer(express.logger());
 
 /*********** SERVER CONFIGURATION *****************/
 app.configure(function() {
@@ -40,15 +40,40 @@ app.configure(function() {
 /*********** END SERVER CONFIGURATION *****************/
 
 app.get('/', function(request, response) {
+
 	
-	response.send("uh oh, can't find that post");
+	response.render('home.html');
+});
+
+app.get('/info', function(request, response){
+	
+	response.render('info.html')
 });
 
 
+app.get('/about', function(request, response){
+	var templateData = {
+		pageTitle : 'NYC Trash Blog'
+	};
+	
+	response.render('about.html', templateData);
+});
+
+app.get('/experience', function(request, response){
+	
+	response.render('experience.html');
+	
+});
+
 app.get('/incoming', function(request, response) {
 	//var message = 
-	
-	response.render("layout.html");
+	response.send('<form method="POST" action="/incoming">' +
+					'From: <input type="text" name="From" value="+16464309130"/>' +
+					'To: <input type="text" name="To" value="+17654307001" />' +					
+					'Body: <input type="text" name="Body" />' +					
+					'<input type="submit" />'+
+					'</form>');
+	//response.render("layout.html");
 });
 
 // Create a function to handle our incoming SMS requests (POST request)
@@ -68,22 +93,20 @@ app.post('/incoming', function(req, res) {
   res.send("are you there?")
 */
 
-	var message = res.json({
-		"sid": "SM64d837baa9f94353ba603e52ef4a9d25",
-	    "date_created": "Fri, 09 Nov 2012 02:32:10 +0000",
-	    "date_updated": "Fri, 09 Nov 2012 02:32:10 +0000",
-	    "date_sent": null,
+	res.json({
+	
+	
+	
+	
 	    "account_sid": "ACad716cc4da934be6ad19bf5353312248",
 	    "to": "+17654307001",
 	    "from": "+16464309130",
 	    "body": "Nick please please please?! I love you <3",
-	    "status": "queued",
-	    "direction": "outbound-api",
-	    "api_version": "2010-04-01",
-	    "price": null,
-	    "uri": "\/2010-04-01\/Accounts\/ACad716cc4da934be6ad19bf5353312248\/SMS\/Messages\/SM64d837baa9f94353ba603e52ef4a9d25.json"		
+	    "uri" : "/https://api.twilio.com/2010-04-01/Accounts/ACad716cc4da934be6ad19bf5353312248/SMS/Messages"
+	   		
 	});	
-	res.send(message, {'Content-Type':'text/json'}, 200);
+	
+	//res.send(message, {'Content-Type':'text/json'}, 200);
 });
 
 var port = process.env.PORT || 3000;
