@@ -1,6 +1,7 @@
 var sys = require('sys');
 var ejs = require('ejs');
 
+// Twilio
 var Twilio = require('twilio-js');
 Twilio.AccountSid = "ACad716cc4da934be6ad19bf5353312248";
 Twilio.AuthToken  = "3af91684fa2d040f587bf96955cffd82";
@@ -72,7 +73,7 @@ app.get('/experience', function(request, response){
 });
 
 app.get('/incoming', function(request, response) {
-	//var message = 
+
 	response.send('<form method="POST" action="/incoming">' +
 					'To: <input type="text" name="To" value="+17654307001" />' +					
 					'Body: <input type="text" name="Body" />' +					
