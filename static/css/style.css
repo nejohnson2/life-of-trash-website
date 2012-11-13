@@ -1,0 +1,15 @@
+body {
+	
+}
+
+.header{
+	padding: 20px 0 60px;
+	text-align: center;
+}
+
+.large-title{
+	font-weight: bold;
+	font-size: 86px;
+	line-height: 80px;
+}
+

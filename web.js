@@ -1,8 +1,14 @@
 var sys = require('sys');
 var ejs = require('ejs');
-var express = require('express'),
-	app = express.createServer(express.logger());
 
+var Twilio = require('twilio-js');
+Twilio.AccountSid = "ACad716cc4da934be6ad19bf5353312248";
+Twilio.AuthToken  = "3af91684fa2d040f587bf96955cffd82";
+
+var express = require('express'),
+    app = express.createServer();
+    
+    
 /*********** SERVER CONFIGURATION *****************/
 app.configure(function() {
     
@@ -28,7 +34,6 @@ app.configure(function() {
         as yourdomain.heroku.com/img/cats.gif or yourdomain.heroku.com/js/script.js
     ******************************************************************/
     app.use(express.static(__dirname + '/static'));
-    
     //parse any http form post
     app.use(express.bodyParser());
     
@@ -38,6 +43,7 @@ app.configure(function() {
 
 });
 /*********** END SERVER CONFIGURATION *****************/
+
 
 app.get('/', function(request, response) {
 
@@ -68,7 +74,6 @@ app.get('/experience', function(request, response){
 app.get('/incoming', function(request, response) {
 	//var message = 
 	response.send('<form method="POST" action="/incoming">' +
-					'From: <input type="text" name="From" value="+16464309130"/>' +
 					'To: <input type="text" name="To" value="+17654307001" />' +					
 					'Body: <input type="text" name="Body" />' +					
 					'<input type="submit" />'+
@@ -79,35 +84,21 @@ app.get('/incoming', function(request, response) {
 // Create a function to handle our incoming SMS requests (POST request)
 app.post('/incoming', function(req, res) {
   // Extract the From and Body values from the POST data
-/*
-  var message = req.body.Body;
-  var from = req.body.From;
-  sys.log('From: ' + from + ', Message: ' + message);
-  
-  var body = req.body.body;
-  // Return sender a very nice message
-  // twiML to be executed when SMS is received
-  var twiml = '<Response><Sms>' + body + '  HA! HA! This response is auto generated.</Sms></Response>';
-  
-  res.send(twiml, {'Content-Type':'text/xml'}, 200);
-  res.send("are you there?")
-*/
 
-	res.json({
-	
-	
-	
-	
-	    "account_sid": "ACad716cc4da934be6ad19bf5353312248",
-	    "to": "+17654307001",
-	    "from": "+16464309130",
-	    "body": "Nick please please please?! I love you <3",
-	    "uri" : "/https://api.twilio.com/2010-04-01/Accounts/ACad716cc4da934be6ad19bf5353312248/SMS/Messages"
-	   		
-	});	
-	
-	//res.send(message, {'Content-Type':'text/json'}, 200);
+  var message = req.body.Body;
+  var to = req.body.To;
+
+  Twilio.SMS.create({to: to, from: "+16464309130", body: message}, function(err,res) {
+  console.log('HOLY MOLY! PHONES ARE RINGING');
+  });
+  
+  res.redirect('/incoming')
+//  res.send("you made it");
+
 });
+
+
+
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
