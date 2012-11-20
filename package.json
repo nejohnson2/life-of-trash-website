@@ -7,7 +7,9 @@
     "twilio" : "0.4.0",
     "twilio-heroku" : "latest",
     "twilio-js" : "latest",
-    "twilio-api" : "latest"
+    "twilio-api" : "latest",
+    "cartodb" : "latest",
+    "mongoose" : "latest",
   },
     "engines": {
     "node": "0.8.x",
