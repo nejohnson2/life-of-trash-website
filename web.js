@@ -225,9 +225,13 @@ app.post('/location', function(req, res) {
 app.post('/received', function(req, res) {
 	
 	var message = req.body.Body;
-	var to = req.body.to;
+	var to = req.body.To;
 	
-	console.log(message);
+	console.log(message + " : " + to);
+	
+	var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for your text, we\'ll be in touch.</Sms>n</Response>';
+
+    res.send(twiml, {'Content-Type':'text/xml'}, 200);
 });
 
 
