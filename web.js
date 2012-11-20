@@ -222,6 +222,7 @@ app.post('/location', function(req, res) {
 
 });
 
+// This receives the twilio text and will add it to cartoDB!!!
 app.post('/received', function(req, res) {
 	
 	var message = req.body.Body;
@@ -232,6 +233,10 @@ app.post('/received', function(req, res) {
 	var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for your text, we\'ll be in touch.</Sms>n</Response>';
 
     res.send(twiml, {'Content-Type':'text/xml'}, 200);
+    
+    // send Insert to CartoDB database
+    res.redirect('http://nejohnson2.cartodb.com/api/v2/sql?q=INSERT INTO life_of_trash (name) VALUES (' + 'this is a string' +', 11, ST_SetSRID(ST_Point(-110, 43),4326))&api_key=032c33b652860d5e5ede3493db15adda21d2e763')
+    
 });
 
 
