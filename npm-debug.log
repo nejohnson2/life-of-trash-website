@@ -1,0 +1,434 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'jsonsp' ]
+2 info using npm@1.1.63
+3 info using node@v0.8.12
+4 verbose read json /Users/luce/ITP/recycleBlog/package.json
+5 verbose read json /Users/luce/ITP/recycleBlog/node_modules/cartodb/package.json
+6 verbose read json /Users/luce/ITP/recycleBlog/node_modules/ejs/package.json
+7 verbose read json /Users/luce/ITP/recycleBlog/node_modules/express/package.json
+8 verbose read json /Users/luce/ITP/recycleBlog/node_modules/mongoose/package.json
+9 verbose read json /Users/luce/ITP/recycleBlog/node_modules/oauth/package.json
+10 verbose read json /Users/luce/ITP/recycleBlog/node_modules/twilio/package.json
+11 verbose read json /Users/luce/ITP/recycleBlog/node_modules/twilio-api/package.json
+12 verbose read json /Users/luce/ITP/recycleBlog/node_modules/twilio-heroku/package.json
+13 verbose read json /Users/luce/ITP/recycleBlog/node_modules/twilio-js/package.json
+14 verbose read json /Users/luce/ITP/recycleBlog/node_modules/underscore/package.json
+15 verbose from cache /Users/luce/ITP/recycleBlog/package.json
+16 verbose readDependencies using package.json deps
+17 verbose cache add [ 'jsonsp', null ]
+18 silly cache add name=undefined spec="jsonsp" args=["jsonsp",null]
+19 verbose parsed url { pathname: 'jsonsp', path: 'jsonsp', href: 'jsonsp' }
+20 silly lockFile d5efaac9-jsonsp jsonsp
+21 verbose lock jsonsp /Users/luce/.npm/d5efaac9-jsonsp.lock
+22 silly lockFile d5efaac9-jsonsp jsonsp
+23 verbose addNamed [ 'jsonsp', '' ]
+24 verbose addNamed [ null, '' ]
+25 silly lockFile db2590dc-jsonsp jsonsp@
+26 verbose lock jsonsp@ /Users/luce/.npm/db2590dc-jsonsp.lock
+27 silly addNameRange { name: 'jsonsp', range: '', hasData: false }
+28 verbose url raw jsonsp
+29 verbose url resolving [ 'https://registry.npmjs.org/', './jsonsp' ]
+30 verbose url resolved https://registry.npmjs.org/jsonsp
+31 info trying registry request attempt 1 at 19:50:04
+32 http GET https://registry.npmjs.org/jsonsp
+33 http 200 https://registry.npmjs.org/jsonsp
+34 silly registry.get cb [ 200,
+34 silly registry.get   { vary: 'Accept',
+34 silly registry.get     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+34 silly registry.get     etag: '"B9E2OBRMXUOHX0KXD6PIS7E6P"',
+34 silly registry.get     date: 'Tue, 20 Nov 2012 00:49:40 GMT',
+34 silly registry.get     'content-type': 'application/json',
+34 silly registry.get     'content-length': '5142' } ]
+35 silly addNameRange number 2 { name: 'jsonsp', range: '', hasData: true }
+36 silly addNameRange versions [ 'jsonsp', [ '0.1.0', '0.2.0' ] ]
+37 verbose addNamed [ 'jsonsp', '0.2.0' ]
+38 verbose addNamed [ '0.2.0', '0.2.0' ]
+39 silly lockFile 7b8e993d-jsonsp-0-2-0 jsonsp@0.2.0
+40 verbose lock jsonsp@0.2.0 /Users/luce/.npm/7b8e993d-jsonsp-0-2-0.lock
+41 silly lockFile 71fc7cd6-pmjs-org-jsonsp-jsonsp-0-2-0-tgz https://registry.npmjs.org/jsonsp/-/jsonsp-0.2.0.tgz
+42 verbose lock https://registry.npmjs.org/jsonsp/-/jsonsp-0.2.0.tgz /Users/luce/.npm/71fc7cd6-pmjs-org-jsonsp-jsonsp-0-2-0-tgz.lock
+43 verbose addRemoteTarball [ 'https://registry.npmjs.org/jsonsp/-/jsonsp-0.2.0.tgz',
+43 verbose addRemoteTarball   '2d4d3e70f2f7376d7b4f911d7716d5cf1f512c5b' ]
+44 info retry fetch attempt 1 at 19:50:08
+45 verbose fetch to= /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/tmp.tgz
+46 http GET https://registry.npmjs.org/jsonsp/-/jsonsp-0.2.0.tgz
+47 http 200 https://registry.npmjs.org/jsonsp/-/jsonsp-0.2.0.tgz
+48 silly shasum updated bytes 3342
+49 info shasum 2d4d3e70f2f7376d7b4f911d7716d5cf1f512c5b
+49 info shasum /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/tmp.tgz
+50 verbose tar unpack /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/tmp.tgz
+51 silly lockFile 2481cc8c-8395-0-29432914801873267-package /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/package
+52 verbose lock /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/package /Users/luce/.npm/2481cc8c-8395-0-29432914801873267-package.lock
+53 silly gunzTarPerm modes [ '755', '644' ]
+54 silly gunzTarPerm extractEntry package.json
+55 silly gunzTarPerm extractEntry .npmignore
+56 silly gunzTarPerm extractEntry README.md
+57 silly gunzTarPerm extractEntry LICENSE
+58 silly gunzTarPerm extractEntry .travis.yml
+59 silly gunzTarPerm extractEntry lib/jsonsp/index.js
+60 silly gunzTarPerm extractEntry lib/jsonsp/parser.js
+61 verbose read json /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/package/package.json
+62 silly lockFile 2481cc8c-8395-0-29432914801873267-package /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/package
+63 verbose from cache /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/package/package.json
+64 verbose tar pack [ '/Users/luce/.npm/jsonsp/0.2.0/package.tgz',
+64 verbose tar pack   '/var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/package' ]
+65 verbose tarball /Users/luce/.npm/jsonsp/0.2.0/package.tgz
+66 verbose folder /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372608395-0.29432914801873267/package
+67 silly lockFile 5722e00e-uce-npm-jsonsp-0-2-0-package-tgz /Users/luce/.npm/jsonsp/0.2.0/package.tgz
+68 verbose lock /Users/luce/.npm/jsonsp/0.2.0/package.tgz /Users/luce/.npm/5722e00e-uce-npm-jsonsp-0-2-0-package-tgz.lock
+69 silly lockFile 5722e00e-uce-npm-jsonsp-0-2-0-package-tgz /Users/luce/.npm/jsonsp/0.2.0/package.tgz
+70 silly lockFile 48d312a6-rs-luce-npm-jsonsp-0-2-0-package /Users/luce/.npm/jsonsp/0.2.0/package
+71 verbose lock /Users/luce/.npm/jsonsp/0.2.0/package /Users/luce/.npm/48d312a6-rs-luce-npm-jsonsp-0-2-0-package.lock
+72 silly lockFile 48d312a6-rs-luce-npm-jsonsp-0-2-0-package /Users/luce/.npm/jsonsp/0.2.0/package
+73 verbose tar unpack /Users/luce/.npm/jsonsp/0.2.0/package.tgz
+74 silly lockFile 48d312a6-rs-luce-npm-jsonsp-0-2-0-package /Users/luce/.npm/jsonsp/0.2.0/package
+75 verbose lock /Users/luce/.npm/jsonsp/0.2.0/package /Users/luce/.npm/48d312a6-rs-luce-npm-jsonsp-0-2-0-package.lock
+76 silly gunzTarPerm modes [ '755', '644' ]
+77 silly gunzTarPerm extractEntry package.json
+78 silly gunzTarPerm extractEntry .npmignore
+79 silly gunzTarPerm extractEntry README.md
+80 silly gunzTarPerm extractEntry LICENSE
+81 silly gunzTarPerm extractEntry .travis.yml
+82 silly gunzTarPerm extractEntry lib/jsonsp/index.js
+83 silly gunzTarPerm extractEntry lib/jsonsp/parser.js
+84 verbose read json /Users/luce/.npm/jsonsp/0.2.0/package/package.json
+85 silly lockFile 48d312a6-rs-luce-npm-jsonsp-0-2-0-package /Users/luce/.npm/jsonsp/0.2.0/package
+86 silly shasum updated bytes 3342
+87 info shasum 2d4d3e70f2f7376d7b4f911d7716d5cf1f512c5b
+87 info shasum /Users/luce/.npm/jsonsp/0.2.0/package.tgz
+88 verbose from cache /Users/luce/.npm/jsonsp/0.2.0/package/package.json
+89 verbose chmod /Users/luce/.npm/jsonsp/0.2.0/package.tgz 644
+90 verbose chown /Users/luce/.npm/jsonsp/0.2.0/package.tgz [ 501, 20 ]
+91 silly lockFile 71fc7cd6-pmjs-org-jsonsp-jsonsp-0-2-0-tgz https://registry.npmjs.org/jsonsp/-/jsonsp-0.2.0.tgz
+92 silly lockFile 7b8e993d-jsonsp-0-2-0 jsonsp@0.2.0
+93 silly lockFile db2590dc-jsonsp jsonsp@
+94 silly resolved [ { name: 'jsonsp',
+94 silly resolved     version: '0.2.0',
+94 silly resolved     description: 'JSON stream parser for Node.js.',
+94 silly resolved     keywords: [ 'json' ],
+94 silly resolved     repository:
+94 silly resolved      { type: 'git',
+94 silly resolved        url: 'git://github.com/jaredhanson/node-jsonsp.git' },
+94 silly resolved     bugs: { url: 'http://github.com/jaredhanson/node-jsonsp/issues' },
+94 silly resolved     author:
+94 silly resolved      { name: 'Jared Hanson',
+94 silly resolved        email: 'jaredhanson@gmail.com',
+94 silly resolved        url: 'http://www.jaredhanson.net/' },
+94 silly resolved     licenses: [ [Object] ],
+94 silly resolved     main: './lib/jsonsp',
+94 silly resolved     dependencies: { pkginfo: '0.2.x', yajl: '0.8.x' },
+94 silly resolved     devDependencies: { vows: '0.6.x' },
+94 silly resolved     scripts: { test: 'NODE_PATH=lib node_modules/.bin/vows test/*-test.js' },
+94 silly resolved     engines: { node: '>= 0.4.0' },
+94 silly resolved     readme: '# jsonsp\n\n[JSON](http://www.json.org/) stream parser for [Node](http://nodejs.org).\n\n## Installation\n\n    $ npm install jsonsp\n\nInstall from source code repository:\n\n    $ git clone git@github.com:jaredhanson/node-jsonsp.git\n    $ cd node-jsonsp\n    $ npm install\n\njsonsp depends on [YAJL](http://lloyd.github.com/yajl/) and the\n[YAJL binding for Node.js](https://github.com/vibornoff/node-yajl).  libyajl\nmust be installed on your system prior to installing jsonsp.\n\nInstall YAJL via [Homebrew](http://mxcl.github.com/homebrew/) on Mac OS X:\n\n    $ brew install yajl\n\n## Usage\n\n#### Initialize Parser\n\nCreate a new JSON stream parser.  The parser will incrementally parse data from\na stream, and emit an `\'object\'` event each time it parses a fully-formed JSON\nobject.\n\n    var parser = new jsonsp.Parser();\n    parser.on(\'object\', function(obj) {\n      // do something with obj\n    });\n\n#### Parse Data from Stream\n\nAs chunks of data are read from a stream, they can be incrementally parsed by\nthe JSON stream parser.\n\n    var req = http.request(options, function(res) {\n      // feed each chunk of data incrementally to the JSON stream parser\n      res.on(\'data\', function(chunk) {\n        parser.parse(chunk.toString(\'utf8\'));\n      });\n    });\n\n## Examples\n\nFor a complete, working example, refer to the [Twitter Streaming API example](https://github.com/jaredhanson/node-jsonsp/tree/master/examples/twitter-stream).\n\n## Tests\n\n    $ npm install\n    $ make test\n\n## Credits\n\n  - [Jared Hanson](http://github.com/jaredhanson)\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2011-2012 Jared Hanson\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the "Software"), to deal in\nthe Software without restriction, including without limitation the rights to\nuse, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of\nthe Software, and to permit persons to whom the Software is furnished to do so,\nsubject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\nFOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR\nCOPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER\nIN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN\nCONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+94 silly resolved     _id: 'jsonsp@0.2.0',
+94 silly resolved     dist: { shasum: '2d4d3e70f2f7376d7b4f911d7716d5cf1f512c5b' },
+94 silly resolved     _from: 'jsonsp' } ]
+95 info install jsonsp@0.2.0 into /Users/luce/ITP/recycleBlog
+96 info installOne jsonsp@0.2.0
+97 verbose from cache /Users/luce/.npm/jsonsp/0.2.0/package/package.json
+98 info /Users/luce/ITP/recycleBlog/node_modules/jsonsp unbuild
+99 verbose read json /Users/luce/ITP/recycleBlog/node_modules/jsonsp/package.json
+100 verbose tar unpack /Users/luce/.npm/jsonsp/0.2.0/package.tgz
+101 silly lockFile ff0f477f--recycleBlog-node-modules-jsonsp /Users/luce/ITP/recycleBlog/node_modules/jsonsp
+102 verbose lock /Users/luce/ITP/recycleBlog/node_modules/jsonsp /Users/luce/.npm/ff0f477f--recycleBlog-node-modules-jsonsp.lock
+103 silly gunzTarPerm modes [ '755', '644' ]
+104 silly gunzTarPerm extractEntry package.json
+105 silly gunzTarPerm extractEntry .npmignore
+106 silly gunzTarPerm extractEntry README.md
+107 silly gunzTarPerm extractEntry LICENSE
+108 silly gunzTarPerm extractEntry .travis.yml
+109 silly gunzTarPerm extractEntry lib/jsonsp/index.js
+110 silly gunzTarPerm extractEntry lib/jsonsp/parser.js
+111 verbose read json /Users/luce/ITP/recycleBlog/node_modules/jsonsp/package.json
+112 silly lockFile ff0f477f--recycleBlog-node-modules-jsonsp /Users/luce/ITP/recycleBlog/node_modules/jsonsp
+113 info preinstall jsonsp@0.2.0
+114 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/package.json
+115 verbose readDependencies using package.json deps
+116 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/package.json
+117 verbose readDependencies using package.json deps
+118 verbose cache add [ 'pkginfo@0.2.x', null ]
+119 silly cache add name=undefined spec="pkginfo@0.2.x" args=["pkginfo@0.2.x",null]
+120 verbose parsed url { pathname: 'pkginfo@0.2.x',
+120 verbose parsed url   path: 'pkginfo@0.2.x',
+120 verbose parsed url   href: 'pkginfo@0.2.x' }
+121 silly cache add name="pkginfo" spec="0.2.x" args=["pkginfo","0.2.x"]
+122 verbose parsed url { pathname: '0.2.x', path: '0.2.x', href: '0.2.x' }
+123 verbose addNamed [ 'pkginfo', '0.2.x' ]
+124 verbose addNamed [ null, '>=0.2.0- <0.3.0-' ]
+125 silly lockFile f898f07d-pkginfo-0-2-x pkginfo@0.2.x
+126 verbose lock pkginfo@0.2.x /Users/luce/.npm/f898f07d-pkginfo-0-2-x.lock
+127 verbose cache add [ 'yajl@0.8.x', null ]
+128 silly cache add name=undefined spec="yajl@0.8.x" args=["yajl@0.8.x",null]
+129 verbose parsed url { pathname: 'yajl@0.8.x',
+129 verbose parsed url   path: 'yajl@0.8.x',
+129 verbose parsed url   href: 'yajl@0.8.x' }
+130 silly cache add name="yajl" spec="0.8.x" args=["yajl","0.8.x"]
+131 verbose parsed url { pathname: '0.8.x', path: '0.8.x', href: '0.8.x' }
+132 verbose addNamed [ 'yajl', '0.8.x' ]
+133 verbose addNamed [ null, '>=0.8.0- <0.9.0-' ]
+134 silly lockFile 6e119e58-yajl-0-8-x yajl@0.8.x
+135 verbose lock yajl@0.8.x /Users/luce/.npm/6e119e58-yajl-0-8-x.lock
+136 silly addNameRange { name: 'pkginfo', range: '>=0.2.0- <0.3.0-', hasData: false }
+137 silly addNameRange { name: 'yajl', range: '>=0.8.0- <0.9.0-', hasData: false }
+138 verbose url raw yajl
+139 verbose url resolving [ 'https://registry.npmjs.org/', './yajl' ]
+140 verbose url resolved https://registry.npmjs.org/yajl
+141 info trying registry request attempt 1 at 19:50:09
+142 http GET https://registry.npmjs.org/yajl
+143 verbose url raw pkginfo
+144 verbose url resolving [ 'https://registry.npmjs.org/', './pkginfo' ]
+145 verbose url resolved https://registry.npmjs.org/pkginfo
+146 info trying registry request attempt 1 at 19:50:09
+147 verbose etag "2EPSOXICJU6JA4Z0ACEASP4OP"
+148 http GET https://registry.npmjs.org/pkginfo
+149 http 304 https://registry.npmjs.org/pkginfo
+150 silly registry.get cb [ 304,
+150 silly registry.get   { server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+150 silly registry.get     etag: '"2EPSOXICJU6JA4Z0ACEASP4OP"',
+150 silly registry.get     date: 'Tue, 20 Nov 2012 00:49:41 GMT',
+150 silly registry.get     'content-length': '0' } ]
+151 verbose etag pkginfo from cache
+152 silly addNameRange number 2 { name: 'pkginfo', range: '>=0.2.0- <0.3.0-', hasData: true }
+153 silly addNameRange versions [ 'pkginfo', [ '0.2.1', '0.2.2', '0.2.3' ] ]
+154 verbose addNamed [ 'pkginfo', '0.2.3' ]
+155 verbose addNamed [ '0.2.3', '0.2.3' ]
+156 silly lockFile d1747791-pkginfo-0-2-3 pkginfo@0.2.3
+157 verbose lock pkginfo@0.2.3 /Users/luce/.npm/d1747791-pkginfo-0-2-3.lock
+158 verbose read json /Users/luce/.npm/pkginfo/0.2.3/package/package.json
+159 http 200 https://registry.npmjs.org/yajl
+160 silly registry.get cb [ 200,
+160 silly registry.get   { vary: 'Accept',
+160 silly registry.get     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+160 silly registry.get     etag: '"2NQQ5TX1JW5TBMWFNG1TIQDO4"',
+160 silly registry.get     date: 'Tue, 20 Nov 2012 00:49:41 GMT',
+160 silly registry.get     'content-type': 'application/json',
+160 silly registry.get     'content-length': '9869' } ]
+161 silly addNameRange number 2 { name: 'yajl', range: '>=0.8.0- <0.9.0-', hasData: true }
+162 silly addNameRange versions [ 'yajl', [ '0.8.0', '0.8.1' ] ]
+163 verbose addNamed [ 'yajl', '0.8.1' ]
+164 verbose addNamed [ '0.8.1', '0.8.1' ]
+165 silly lockFile 5e93481d-yajl-0-8-1 yajl@0.8.1
+166 verbose lock yajl@0.8.1 /Users/luce/.npm/5e93481d-yajl-0-8-1.lock
+167 silly lockFile 15ed6e46-ry-npmjs-org-yajl-yajl-0-8-1-tgz https://registry.npmjs.org/yajl/-/yajl-0.8.1.tgz
+168 verbose lock https://registry.npmjs.org/yajl/-/yajl-0.8.1.tgz /Users/luce/.npm/15ed6e46-ry-npmjs-org-yajl-yajl-0-8-1-tgz.lock
+169 verbose addRemoteTarball [ 'https://registry.npmjs.org/yajl/-/yajl-0.8.1.tgz',
+169 verbose addRemoteTarball   'bea726909e30145667b879f8d2e2041006d5510e' ]
+170 info retry fetch attempt 1 at 19:50:09
+171 verbose fetch to= /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/tmp.tgz
+172 http GET https://registry.npmjs.org/yajl/-/yajl-0.8.1.tgz
+173 silly lockFile d1747791-pkginfo-0-2-3 pkginfo@0.2.3
+174 silly lockFile f898f07d-pkginfo-0-2-x pkginfo@0.2.x
+175 http 200 https://registry.npmjs.org/yajl/-/yajl-0.8.1.tgz
+176 silly shasum updated bytes 7882
+177 info shasum bea726909e30145667b879f8d2e2041006d5510e
+177 info shasum /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/tmp.tgz
+178 verbose tar unpack /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/tmp.tgz
+179 silly lockFile 785e6a1f-09556-0-6823934644926339-package /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/package
+180 verbose lock /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/package /Users/luce/.npm/785e6a1f-09556-0-6823934644926339-package.lock
+181 silly gunzTarPerm modes [ '755', '644' ]
+182 silly gunzTarPerm extractEntry LICENSE
+183 silly gunzTarPerm extractEntry package.json
+184 silly gunzTarPerm extractEntry README.md
+185 silly gunzTarPerm extractEntry binding.gyp
+186 silly gunzTarPerm extractEntry .npmignore
+187 silly gunzTarPerm extractEntry test1.json
+188 silly gunzTarPerm extractEntry test.js
+189 silly gunzTarPerm extractEntry wscript
+190 silly gunzTarPerm extractEntry src/
+191 silly gunzTarPerm extractEntry src/yajl.cc
+192 silly gunzTarPerm extractEntry src/handle.cc
+193 silly gunzTarPerm extractEntry src/handle.hh
+194 silly gunzTarPerm extractEntry yajl.js
+195 silly gunzTarPerm extractEntry test2.json
+196 verbose read json /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/package/package.json
+197 silly lockFile 785e6a1f-09556-0-6823934644926339-package /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/package
+198 verbose from cache /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/package/package.json
+199 verbose tar pack [ '/Users/luce/.npm/yajl/0.8.1/package.tgz',
+199 verbose tar pack   '/var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/package' ]
+200 verbose tarball /Users/luce/.npm/yajl/0.8.1/package.tgz
+201 verbose folder /var/folders/np/w81jgn7j68qdwgj804h3n6900000gn/T/npm-29114/1353372609556-0.6823934644926339/package
+202 silly lockFile a20a1cee--luce-npm-yajl-0-8-1-package-tgz /Users/luce/.npm/yajl/0.8.1/package.tgz
+203 verbose lock /Users/luce/.npm/yajl/0.8.1/package.tgz /Users/luce/.npm/a20a1cee--luce-npm-yajl-0-8-1-package-tgz.lock
+204 silly lockFile a20a1cee--luce-npm-yajl-0-8-1-package-tgz /Users/luce/.npm/yajl/0.8.1/package.tgz
+205 silly lockFile 9ca865f2-sers-luce-npm-yajl-0-8-1-package /Users/luce/.npm/yajl/0.8.1/package
+206 verbose lock /Users/luce/.npm/yajl/0.8.1/package /Users/luce/.npm/9ca865f2-sers-luce-npm-yajl-0-8-1-package.lock
+207 silly lockFile 9ca865f2-sers-luce-npm-yajl-0-8-1-package /Users/luce/.npm/yajl/0.8.1/package
+208 verbose tar unpack /Users/luce/.npm/yajl/0.8.1/package.tgz
+209 silly lockFile 9ca865f2-sers-luce-npm-yajl-0-8-1-package /Users/luce/.npm/yajl/0.8.1/package
+210 verbose lock /Users/luce/.npm/yajl/0.8.1/package /Users/luce/.npm/9ca865f2-sers-luce-npm-yajl-0-8-1-package.lock
+211 silly gunzTarPerm modes [ '755', '644' ]
+212 silly gunzTarPerm extractEntry package.json
+213 silly gunzTarPerm extractEntry .npmignore
+214 silly gunzTarPerm extractEntry README.md
+215 silly gunzTarPerm extractEntry LICENSE
+216 silly gunzTarPerm extractEntry test.js
+217 silly gunzTarPerm extractEntry yajl.js
+218 silly gunzTarPerm extractEntry binding.gyp
+219 silly gunzTarPerm extractEntry test1.json
+220 silly gunzTarPerm extractEntry test2.json
+221 silly gunzTarPerm extractEntry wscript
+222 silly gunzTarPerm extractEntry src/handle.cc
+223 silly gunzTarPerm extractEntry src/handle.hh
+224 silly gunzTarPerm extractEntry src/yajl.cc
+225 verbose read json /Users/luce/.npm/yajl/0.8.1/package/package.json
+226 silly lockFile 9ca865f2-sers-luce-npm-yajl-0-8-1-package /Users/luce/.npm/yajl/0.8.1/package
+227 silly shasum updated bytes 7845
+228 info shasum 61530eac72aa969d15d0effaa56ccc004ca75c90
+228 info shasum /Users/luce/.npm/yajl/0.8.1/package.tgz
+229 verbose from cache /Users/luce/.npm/yajl/0.8.1/package/package.json
+230 verbose chmod /Users/luce/.npm/yajl/0.8.1/package.tgz 644
+231 verbose chown /Users/luce/.npm/yajl/0.8.1/package.tgz [ 501, 20 ]
+232 silly lockFile 15ed6e46-ry-npmjs-org-yajl-yajl-0-8-1-tgz https://registry.npmjs.org/yajl/-/yajl-0.8.1.tgz
+233 silly lockFile 5e93481d-yajl-0-8-1 yajl@0.8.1
+234 silly lockFile 6e119e58-yajl-0-8-x yajl@0.8.x
+235 silly resolved [ { name: 'pkginfo',
+235 silly resolved     version: '0.2.3',
+235 silly resolved     description: 'An easy way to expose properties on a module from a package.json',
+235 silly resolved     author: { name: 'Charlie Robbins', email: 'charlie.robbins@gmail.com' },
+235 silly resolved     repository:
+235 silly resolved      { type: 'git',
+235 silly resolved        url: 'http://github.com/indexzero/node-pkginfo.git' },
+235 silly resolved     keywords: [ 'info', 'tools', 'package.json' ],
+235 silly resolved     devDependencies: { vows: '0.6.x' },
+235 silly resolved     main: './lib/pkginfo',
+235 silly resolved     scripts: { test: 'vows test/*-test.js --spec' },
+235 silly resolved     engines: { node: '>= 0.4.0' },
+235 silly resolved     readme: '# node-pkginfo\n\nAn easy way to expose properties on a module from a package.json\n\n## Installation\n\n### Installing npm (node package manager)\n```\n  curl http://npmjs.org/install.sh | sh\n```\n\n### Installing pkginfo\n```\n  [sudo] npm install pkginfo\n```\n\n## Motivation\nHow often when writing node.js modules have you written the following line(s) of code? \n\n* Hard code your version string into your code\n\n``` js\n  exports.version = \'0.1.0\';\n```\n\n* Programmatically expose the version from the package.json\n\n``` js\n  exports.version = JSON.parse(fs.readFileSync(\'/path/to/package.json\', \'utf8\')).version;\n```\n\nIn other words, how often have you wanted to expose basic information from your package.json onto your module programmatically? **WELL NOW YOU CAN!**\n\n## Usage\n\nUsing `pkginfo` is idiot-proof, just require and invoke it. \n\n``` js\n  var pkginfo = require(\'pkginfo\')(module);\n  \n  console.dir(module.exports);\n```\n\nBy invoking the `pkginfo` module all of the properties in your `package.json` file will be automatically exposed on the callee module (i.e. the parent module of `pkginfo`). \n\nHere\'s a sample of the output:\n\n```\n  { name: \'simple-app\',\n    description: \'A test fixture for pkginfo\',\n    version: \'0.1.0\',\n    author: \'Charlie Robbins <charlie.robbins@gmail.com>\',\n    keywords: [ \'test\', \'fixture\' ],\n    main: \'./index.js\',\n    scripts: { test: \'vows test/*-test.js --spec\' },\n    engines: { node: \'>= 0.4.0\' } }\n```\n\n### Expose specific properties\nIf you don\'t want to expose **all** properties on from your `package.json` on your module then simple pass those properties to the `pkginfo` function:\n\n``` js\n  var pkginfo = require(\'pkginfo\')(module, \'version\', \'author\');\n  \n  console.dir(module.exports);\n```\n\n```\n  { version: \'0.1.0\',\n    author: \'Charlie Robbins <charlie.robbins@gmail.com>\' }\n```\n\nIf you\'re looking for further usage see the [examples][0] included in this repository. \n\n## Run Tests\nTests are written in [vows][1] and give complete coverage of all APIs.\n\n```\n  vows test/*-test.js --spec\n```\n\n[0]: https://github.com/indexzero/node-pkginfo/tree/master/examples\n[1]: http://vowsjs.org\n\n#### Author: [Charlie Robbins](http://nodejitsu.com)',
+235 silly resolved     _id: 'pkginfo@0.2.3',
+235 silly resolved     _from: 'pkginfo@0.2.x' },
+235 silly resolved   { name: 'yajl',
+235 silly resolved     version: '0.8.1',
+235 silly resolved     description: 'Binding for libyajl',
+235 silly resolved     author: { name: 'Artem S Vybornov', email: 'vybornov@gmail.com' },
+235 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
+235 silly resolved     main: './yajl.js',
+235 silly resolved     scripts: { test: 'node ./test.js', install: 'node-gyp rebuild' },
+235 silly resolved     repository:
+235 silly resolved      { type: 'git',
+235 silly resolved        url: 'git://github.com/vibornoff/node-yajl.git',
+235 silly resolved        web: 'http://github.com/vibornoff/node-yajl' },
+235 silly resolved     gypfile: true,
+235 silly resolved     readme: '# YAJL (Yet Another JSON Library) binding for Node.js\n\n[YAJL](http://lloyd.github.com/yajl/) is a low-level sax-like JSON parser\ndeveloped and maintained by Lloyd Hilaiel.\n\n[Node-yajl](http://github.com/vibornoff/node-yajl) provides a glue that brings\nYAJL into [Node.js](http://github.com/joyent/node) ecosystem. Main feature\nof this project is a stream JSON parser allowing you to parse data\nwithout explicitly delimitting data stream into valid-value chunks.\n\n[Node-yajl](http://github.com/vibornoff/node-yajl) is forked from\n[yajl-js](http://bitbucket.org/nikhilm/yajl-js) originally developed\nby Nikhil Marathe and seems to be no longer maintained.\n\n## Synopsis\n\n```js\nvar yajl = require(\'yajl\');\n\nvar h = new yajl.Handle();\nh.on( \'error\',      function (_) { console.debug(_)     });\n\nh.on( \'startMap\',   function ( ) { console.debug(\'{\')   });\nh.on( \'endMap\',     function ( ) { console.debug(\'}\')   });\nh.on( \'startArray\', function ( ) { console.debug(\'[\')   });\nh.on( \'endArray\',   function ( ) { console.debug(\']\')   });\nh.on( \'mapKey\',     function (_) { console.debug(_+\':\') });\nh.on( \'null\',       function (_) { console.debug(\'null\')});\nh.on( \'boolean\',    function (_) { console.debug(_)     });\nh.on( \'string\',     function (_) { console.debug(_)     });\nh.on( \'integer\',    function (_) { console.debug(_)     });\nh.on( \'double\',     function (_) { console.debug(_)     });\n\nvar data = [\n    \'{"some"\',\n    \':["JSON\',\n    \'"],"data\',\n    \'":[-3.5]}\'\n];\n\nfor ( var i in data ) {\n    h.parse( data[i] );\n}\n\nh.completeParse();\n```\n\n## Build & install\n\nEasy mode:\n\n    npm install yajl\n\nBuild and install manually:\n\n    node-waf configure build\n    node ./test.js\n    npm install .\n\nNote that this package requires C++ building environment and \'libyajl\' at least\nof version 2 and its dev headers to be installed on target system.\n\nSee [yajl homepage](http://lloyd.github.com/yajl/) for details about building\nand installing \'libyajl\'.\n\n## API\n\n### yajl.Handle(opts)\n\n`Handle` object constructor.\nClass `Handle` itself is a subclass of `events.EventEmitter`.\n\nOptional argument `opts` can be passed to constructor.\nWhen `opts` is ommited or `null`, these defaults are used:\n\n```js\n{\n    allowComments         : false,\n    dontValidateStrings   : false,\n    allowTrailingGarbage  : false,\n    allowMultipleValues   : false,\n    allowPartialValues    : false\n}\n```\n\n#### handle.parse(string)\n\nParse a data chunk possibly raising number of events.\n\n#### handle.parseComplete()\n\nParse any ramaining buffered data.\n\nBecause of `yajl`\'s stream nature it can\'t sometimes determine when the recently\nparsed data contains a valid JSON value or there need more data (e.g. when parsing numeric values).\nSo it\'s a good idea to call this method every time you reach the end of data stream.\n\n#### handle.getBytesConsumed()\n\nGet the amount of data consumed from the last chunk passed to `handle`.\n\nIn the case of a successful parse this can help you understand\nif the entire buffer was consumed or not.\n\n#### Events\n * \'startMap\'\n * \'endMap\'\n * \'startArray\'\n * \'endArray\'\n * \'mapKey\'\n * \'null\'\n * \'boolean\'\n * \'integer\'\n * \'double\'\n * \'number\'\n * \'string\'\n\n## License\n\nModified BSD Lincense.\nSee [\'LICENSE\' file](http://github.com/vibornoff/node-yajl/blob/master/LICENSE)\nfor details.\n',
+235 silly resolved     _id: 'yajl@0.8.1',
+235 silly resolved     dist: { shasum: '61530eac72aa969d15d0effaa56ccc004ca75c90' },
+235 silly resolved     _from: 'yajl@0.8.x' } ]
+236 info install pkginfo@0.2.3 into /Users/luce/ITP/recycleBlog/node_modules/jsonsp
+237 info install yajl@0.8.1 into /Users/luce/ITP/recycleBlog/node_modules/jsonsp
+238 info installOne pkginfo@0.2.3
+239 info installOne yajl@0.8.1
+240 verbose from cache /Users/luce/.npm/pkginfo/0.2.3/package/package.json
+241 verbose from cache /Users/luce/.npm/yajl/0.8.1/package/package.json
+242 info /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo unbuild
+243 verbose read json /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo/package.json
+244 info /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl unbuild
+245 verbose read json /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl/package.json
+246 verbose tar unpack /Users/luce/.npm/pkginfo/0.2.3/package.tgz
+247 verbose tar unpack /Users/luce/.npm/yajl/0.8.1/package.tgz
+248 silly lockFile 86aae407-ules-jsonsp-node-modules-pkginfo /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo
+249 verbose lock /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo /Users/luce/.npm/86aae407-ules-jsonsp-node-modules-pkginfo.lock
+250 silly lockFile 23c723e9-modules-jsonsp-node-modules-yajl /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl
+251 verbose lock /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl /Users/luce/.npm/23c723e9-modules-jsonsp-node-modules-yajl.lock
+252 silly gunzTarPerm modes [ '755', '644' ]
+253 silly gunzTarPerm modes [ '755', '644' ]
+254 silly gunzTarPerm extractEntry package.json
+255 silly gunzTarPerm extractEntry .npmignore
+256 silly gunzTarPerm extractEntry README.md
+257 silly gunzTarPerm extractEntry LICENSE
+258 silly gunzTarPerm extractEntry test.js
+259 silly gunzTarPerm extractEntry yajl.js
+260 silly gunzTarPerm extractEntry binding.gyp
+261 silly gunzTarPerm extractEntry test1.json
+262 silly gunzTarPerm extractEntry test2.json
+263 silly gunzTarPerm extractEntry wscript
+264 silly gunzTarPerm extractEntry src/handle.cc
+265 silly gunzTarPerm extractEntry src/handle.hh
+266 silly gunzTarPerm extractEntry src/yajl.cc
+267 silly gunzTarPerm extractEntry package.json
+268 silly gunzTarPerm extractEntry .npmignore
+269 silly gunzTarPerm extractEntry README.md
+270 silly gunzTarPerm extractEntry docs/docco.css
+271 silly gunzTarPerm extractEntry docs/pkginfo.html
+272 silly gunzTarPerm extractEntry examples/package.json
+273 silly gunzTarPerm extractEntry examples/all-properties.js
+274 silly gunzTarPerm extractEntry examples/array-argument.js
+275 silly gunzTarPerm extractEntry examples/multiple-properties.js
+276 silly gunzTarPerm extractEntry examples/object-argument.js
+277 silly gunzTarPerm extractEntry examples/single-property.js
+278 silly gunzTarPerm extractEntry lib/pkginfo.js
+279 silly gunzTarPerm extractEntry test/pkginfo-test.js
+280 verbose read json /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl/package.json
+281 silly lockFile 23c723e9-modules-jsonsp-node-modules-yajl /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl
+282 info preinstall yajl@0.8.1
+283 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl/package.json
+284 verbose readDependencies using package.json deps
+285 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl/package.json
+286 verbose readDependencies using package.json deps
+287 silly resolved []
+288 verbose about to build /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl
+289 info build /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl
+290 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl/package.json
+291 verbose linkStuff [ false,
+291 verbose linkStuff   false,
+291 verbose linkStuff   false,
+291 verbose linkStuff   '/Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules' ]
+292 info linkStuff yajl@0.8.1
+293 verbose linkBins yajl@0.8.1
+294 verbose linkMans yajl@0.8.1
+295 verbose rebuildBundles yajl@0.8.1
+296 info install yajl@0.8.1
+297 verbose unsafe-perm in lifecycle true
+298 silly exec sh "-c" "node-gyp rebuild"
+299 silly sh,-c,node-gyp rebuild,/Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl spawning
+300 verbose read json /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo/package.json
+301 silly lockFile 86aae407-ules-jsonsp-node-modules-pkginfo /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo
+302 info preinstall pkginfo@0.2.3
+303 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo/package.json
+304 verbose readDependencies using package.json deps
+305 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo/package.json
+306 verbose readDependencies using package.json deps
+307 silly resolved []
+308 verbose about to build /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo
+309 info build /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo
+310 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/pkginfo/package.json
+311 verbose linkStuff [ false,
+311 verbose linkStuff   false,
+311 verbose linkStuff   false,
+311 verbose linkStuff   '/Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules' ]
+312 info linkStuff pkginfo@0.2.3
+313 verbose linkBins pkginfo@0.2.3
+314 verbose linkMans pkginfo@0.2.3
+315 verbose rebuildBundles pkginfo@0.2.3
+316 info install pkginfo@0.2.3
+317 info postinstall pkginfo@0.2.3
+318 info yajl@0.8.1 Failed to exec install script
+319 info /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl unbuild
+320 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules/yajl/package.json
+321 info preuninstall yajl@0.8.1
+322 info uninstall yajl@0.8.1
+323 verbose false,/Users/luce/ITP/recycleBlog/node_modules,/Users/luce/ITP/recycleBlog/node_modules/jsonsp/node_modules unbuild yajl@0.8.1
+324 info postuninstall yajl@0.8.1
+325 verbose about to build /Users/luce/ITP/recycleBlog/node_modules/jsonsp
+326 info /Users/luce/ITP/recycleBlog/node_modules/jsonsp unbuild
+327 verbose from cache /Users/luce/ITP/recycleBlog/node_modules/jsonsp/package.json
+328 info preuninstall jsonsp@0.2.0
+329 info uninstall jsonsp@0.2.0
+330 verbose true,/Users/luce/ITP/recycleBlog/node_modules,/Users/luce/ITP/recycleBlog/node_modules unbuild jsonsp@0.2.0
+331 info postuninstall jsonsp@0.2.0
+332 error yajl@0.8.1 install: `node-gyp rebuild`
+332 error `sh "-c" "node-gyp rebuild"` failed with 1
+333 error Failed at the yajl@0.8.1 install script.
+333 error This is most likely a problem with the yajl package,
+333 error not with npm itself.
+333 error Tell the author that this fails on your system:
+333 error     node-gyp rebuild
+333 error You can get their info via:
+333 error     npm owner ls yajl
+333 error There is likely additional logging output above.
+334 error System Darwin 11.4.2
+335 error command "node" "/usr/local/bin/npm" "install" "jsonsp"
+336 error cwd /Users/luce/ITP/recycleBlog
+337 error node -v v0.8.12
+338 error npm -v 1.1.63
+339 error code ELIFECYCLE
+340 verbose exit [ 1, true ]
