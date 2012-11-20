@@ -199,11 +199,14 @@ app.get('/twilio', function(req, res){
 
 app.get('/location', function(request, response) {
 
+/*
 	response.send('<form method="POST" action="/location">' +
 					'Lat: <input type="text" name="lat" />' +					
 					'Lon: <input type="text" name="lon" />' +					
 					'<input type="submit" />'+
 					'</form>');
+*/
+	response.render('location.html')
 });
 
 // Create a function to handle our incoming SMS requests (POST request)
@@ -212,9 +215,6 @@ app.post('/location', function(req, res) {
 
   var lat = req.body.lat;
   var lon = req.body.lon;
-  
- 
-http://{account}.cartodb.com/api/v2/sql?q=INSERT INTO test_table (column_name, column_name_2, the_geom) VALUES ('this is a string', 11, ST_SetSRID(ST_Point(-110, 43),4326))&api_key={Your API key}
 
 
   res.render('location.html')

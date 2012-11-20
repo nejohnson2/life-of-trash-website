@@ -3,8 +3,8 @@
   $(function() {
 
     var 
-    user  = "examples",
-    table = "nyc_wifi";
+    user  = "nejohnson2",
+    table = "life_of_trash";
     lat   = 40.719599,
     lng   = -74.000902,
     zoom  = 13;
