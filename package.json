@@ -9,7 +9,7 @@
     "twilio-js" : "latest",
     "twilio-api" : "latest",
     "cartodb" : "latest",
-    "mongoose" : "latest",
+    "mongoose" : "latest"
   },
     "engines": {
     "node": "0.8.x",
