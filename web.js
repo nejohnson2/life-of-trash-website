@@ -222,6 +222,14 @@ app.post('/location', function(req, res) {
 
 });
 
+app.post('/received', function(req, res) {
+	
+	var message = req.body.Body;
+	var to = req.body.to;
+	
+	console.log(message);
+});
+
 
 
 var port = process.env.PORT || 3000;
