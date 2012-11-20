@@ -60,6 +60,7 @@ app.configure(function() {
 
 });
 /*********** END SERVER CONFIGURATION *****************/
+/*
 client.on('connect', function() {
     console.log("connected");
 });
@@ -72,6 +73,7 @@ client.on('data', function(data) {
 client.on('error', function(err) {
     console.log("some error ocurred");
 });
+*/
 
 app.get('/', function(request, response) {
 
@@ -239,6 +241,43 @@ app.post('/received', function(req, res) {
     
 });
 
+app.get('/sendCarto', function(req, res) {
+
+	res.send('<form method="POST" action="/sendCarto">' +
+					'Lat: <input type="text" name="lat" />' +					
+					'Lon: <input type="text" name="lon" />' +					
+					'<input type="submit" />'+
+					'</form>');	
+	
+});
+
+app.post('/sendCarto', function(req, res) {
+	
+	// connect to the database
+	client.on('connect', function(){
+		console.log('connected');
+		client.query("select * from life_of_trash limit 5");
+	});
+	
+	var message = client.query("select * from life_of_trash", {table: 'life_of_trash'});
+	console.log('here');
+	console.log(message);
+	res.send('here');
+
+	// do something
+	
+	// close the database
+	
+	
+//example {"type":"MultiLineString","coordinates":[[[-73.988113,40.674389],[-73.989315,40.720462],[-74.013519,40.703026]]]}
+});
+
+app.post('/neighbor', function(req, res){
+
+	var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for signing up!  What would you like to help with? A) Emergencies, B) Around the House, C) Socializing, D) Pet Walking.</Sms>n</Response>';
+
+    res.send(twiml, {'Content-Type':'text/xml'}, 200);
+});
 
 
 var port = process.env.PORT || 3000;
