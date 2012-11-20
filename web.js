@@ -75,7 +75,7 @@ client.on('error', function(err) {
 
 app.get('/', function(request, response) {
 
-	response.render('home.html');
+	response.render('location.html');
 });
 
 app.get('/info', function(request, response){
@@ -193,8 +193,8 @@ app.get('/twilio', function(req, res){
 		};
 	res.send(templateData);
 	});	  
-*/
 	res.send("hello");
+*/
 });
 
 app.get('/location', function(request, response) {
