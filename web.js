@@ -307,7 +307,7 @@ app.post('/neighbor', function(req, res){
 	var to = req.body.To;
 	var date = req.body.date;
 
-	neighbor.from = from;
+	neighbor.number = from;
 	neighbor.to = to;
 	neighbor.body = body;
 	neighbor.save();
