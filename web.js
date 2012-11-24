@@ -302,9 +302,9 @@ app.post('/neighbor', function(req, res){
 	//this is where the twilio number comes in from each of the neighbors
 	var neighbor = new Neighbor();
 	
-	var body = req.body.body;
-	var from = req.body.from;
-	var to = req.body.to;
+	var body = req.body.Body;
+	var from = req.body.From;
+	var to = req.body.To;
 	var date = req.body.date;
 	
 	neighbor.from = from;
