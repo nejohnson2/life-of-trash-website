@@ -324,7 +324,7 @@ app.post('/neighbor', function(req, res){
 		message = "Thanks for registering with Building 3.";
 	} else if(to == '+16464309891' ) {
 		message = "Thanks for registering with Building 4.";
-	} else if(to == '+16464025754' {
+	} else if(to == '+16464025754' ) {
 		message = "Thanks for registering with Building 5.";
 	} else {
 		message = "Thanks for registering.";
