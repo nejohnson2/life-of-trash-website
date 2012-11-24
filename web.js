@@ -23,6 +23,7 @@ app.db = mongoose.connect(process.env.MONGOLAB_URI);
 require('./models').configureSchema(schema, mongoose);
 
 var SMS = mongoose.model('SMS');
+var Neighbor = mongoose.model('Neighbor');
 
 /*********** End Database CONFIGURATION *****************/ 
     
@@ -145,7 +146,7 @@ app.get('/sms', function(req, res){
 		
 		//prepare template data
 		templateData = {
-			posts : allPosts
+			sms : allPosts
 		};
 		
 	res.send(templateData);
@@ -272,11 +273,112 @@ app.post('/sendCarto', function(req, res) {
 //example {"type":"MultiLineString","coordinates":[[[-73.988113,40.674389],[-73.989315,40.720462],[-74.013519,40.703026]]]}
 });
 
-app.post('/neighbor', function(req, res){
+app.get('/neighbor', function(req, res){
 
+
+	res.send('<form method="POST" action="/neighbor">' +
+					'from: <input type="text" name="body" />' +									
+					'<input type="submit" />'+
+					'</form>');	
+  
+/*
+	var query = Neighbor.find({});
+//	query.sort('Date',-1);
+	
+	query.exec({}, function(err, allNeighbors){
+		
+		neighborData = {
+			neighbors : allNeighbors
+		};
+		
+		res.render(neighborData);
+		
+		
+	});
+*/
+});
+
+app.post('/neighbor', function(req, res){
+	//this is where the twilio number comes in from each of the neighbors
+	var neighbor = new Neighbor();
+	
+	var body = req.body.body;
+	var from = req.body.from;
+	var to = req.body.to;
+	var date = req.body.date;
+	
+	neighbor.from = from;
+	neighbor.to = to;
+	neighbor.body = body;
+	neighbor.save();
+	
+	res.redirect('/neighbor/' + neighbor.from)
+
+
+/*
+	 // received twilio
+	var from = req.body.From;
+	var to = req.body.To;
+	var body = req.body.Body;
+
+  
+	var newNeighbor = {
+	  from: req.body.To,
+	  body: req.body.Body,
+	  to: 	req.body.From
+	};
+  
+	var Neighbor = new Neighbor(newNeighbor);
+	Neighbor.save();
+	 
+	 
 	var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for signing up!  What would you like to help with? A) Emergencies, B) Around the House, C) Socializing, D) Pet Walking.</Sms>n</Response>';
 
     res.send(twiml, {'Content-Type':'text/xml'}, 200);
+*/
+});
+
+app.get('/neighbor/:number', function(req, res) {
+	var number = req.params.number;
+	number += "<hr>";
+	console.log(number);
+	
+	
+	var query = Neighbor.find({});
+	//query.sort('date', -1); //sort by date in decending order
+	
+	query.exec({}, function(err, allNeighbors){
+		
+		//prepare template data
+		templateData = {
+			neighbor : allNeighbors
+		};
+		
+	res.send(templateData);
+	
+	});
+
+	
+/*
+	
+	var query = Neighbor.find({});
+	//	query.sort('Date',-1);
+	
+	query.exec({}, function(err, allNeighbors){
+	
+	neighborData = {
+		neighbors : allNeighbors
+	};
+	
+	res.render(neighborData);
+	
+	
+	});
+	
+	
+	res.send(number)
+*/
+	
 });
 
 
