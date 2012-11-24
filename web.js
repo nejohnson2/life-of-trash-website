@@ -316,16 +316,16 @@ app.post('/neighbor', function(req, res){
 	// Building 4 : 16464309891, Building 5 : 16464025754,
 
 
-	if(to = '16464612494'){
-		message ="Thanks for registering with Building 1.";
-	} else if(to = '16464612588' ) {
-		message ="Thanks for registering with Building 2.";
-	} else if(to = '16464612530' ) {
-		message ="Thanks for registering with Building 3.";
-	} else if(to = '16464309891' ) {
-		message ="Thanks for registering with Building 4.";
+	if(to == '16464612494'){
+		message = "Thanks for registering with Building 1.";
+	} else if(to == '16464612588' ) {
+		message = "Thanks for registering with Building 2.";
+	} else if(to == '16464612530' ) {
+		message = "Thanks for registering with Building 3.";
+	} else if(to == '16464309891' ) {
+		message = "Thanks for registering with Building 4.";
 	} else {
-		message ="Thanks for registering with Building 5.";
+		message = "Thanks for registering with Building 5.";
 	}
 
 
