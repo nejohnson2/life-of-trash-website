@@ -330,7 +330,7 @@ app.post('/neighbor', function(req, res){
 	}
 */
 
-	Twilio.SMS.create({to: to, from: '+' + from, body: message}, function(err,res) {
+	Twilio.SMS.create({to: to, from: from, body: message}, function(err,res) {
 		console.log('Up Up and Away...SMS Sent!');
 	});
 	
