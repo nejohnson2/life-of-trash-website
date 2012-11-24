@@ -306,10 +306,7 @@ app.post('/neighbor', function(req, res){
 	var from = req.body.From;
 	var to = req.body.To;
 	var date = req.body.date;
-	
-	console.log(body);
-	conosle.log(req);
-	
+
 	neighbor.from = from;
 	neighbor.to = to;
 	neighbor.body = body;
