@@ -306,6 +306,25 @@ app.post('/neighbor', function(req, res){
 	var from = req.body.From;
 	var to = req.body.To;
 	var date = req.body.date;
+	
+	//Twilio Numbers: Building 1 : 16464612494, Building 2 : 16464612588, Building 3 : 16464612530
+	// Building 4 : 16464309891, Building 5 : 16464025754,
+
+	if(to = '16464612494'){
+		var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for signing with Building 1</Sms>n</Response>';
+		res.send(twiml, {'Content-Type':'text/xml'}, 200);
+	} else if(to = '16464612588' ) {
+		var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for signing with Building 2</Sms>n</Response>';
+		res.send(twiml, {'Content-Type':'text/xml'}, 200);
+	} else if(to = '16464612530' ) {
+		var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for signing with Building 3</Sms>n</Response>';
+		res.send(twiml, {'Content-Type':'text/xml'}, 200);
+	} else if(to = '16464309891' ) {
+		var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for signing with Building 4</Sms>n</Response>';
+		res.send(twiml, {'Content-Type':'text/xml'}, 200);	
+	} else {
+		var twiml = '<?xml version="1.0" encoding="UTF-8" ?><Response>n<Sms>Thanks for signing with Building 5</Sms>n</Response>';
+	}
 
 	neighbor.number = from;
 	neighbor.to = to;
@@ -339,6 +358,9 @@ app.post('/neighbor', function(req, res){
 });
 
 app.get('/neighbor/:number', function(req, res) {
+
+	// Here, i need to take the :number and use it to pull out just the numbers that I want
+
 	var number = req.params.number;
 	number += "<hr>";
 	console.log(number);
