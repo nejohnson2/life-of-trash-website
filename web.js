@@ -308,6 +308,7 @@ app.post('/neighbor', function(req, res){
 	var date = req.body.date;
 	
 	var message = "thanks buddy";
+	console.log(from);
 	//Twilio Numbers: Building 1 : 16464612494, Building 2 : 16464612588, Building 3 : 16464612530
 	// Building 4 : 16464309891, Building 5 : 16464025754,
 
@@ -330,7 +331,8 @@ app.post('/neighbor', function(req, res){
 	}
 */
 
-	Twilio.SMS.create({to: to, from: from, body: message}, function(err,res) {
+	Twilio.SMS.create({to: to, from: "+" + from, body: message}, function(err,res) {
+	
 		console.log('Up Up and Away...SMS Sent!');
 	});
 	
