@@ -247,8 +247,9 @@ app.post('/sendCarto', function(req, res) {
 	var body = req.body.Body;
 	//var split = querystring.parse(body);
 	
-	console.log(body);
+	console.log('Message Body ' + body);
 	
+/*
 	var lat = req.body.lat;
 	var lon = req.body.lon;
 	
@@ -267,8 +268,9 @@ app.post('/sendCarto', function(req, res) {
 	// catch any errors from cartodb
 	client.on('error', function(err) {
 	    console.log("some error ocurred from CartoDB");
-	    console.log(err);
+	    //console.log(err);
 	});
+*/
 
 	res.send('here');
 
