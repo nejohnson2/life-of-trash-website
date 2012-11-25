@@ -247,14 +247,15 @@ app.post('/sendCarto', function(req, res) {
 	
 	var body = req.body.Body;
 	var split = querystring.parse(body);
-//	var lat = split.lat;
-//	var lon = split.lon;
+	var lat = split.lat;
+	var lon = split.lon;
 
 	console.log('Lat = ' + split.lat + ' - Lon = ' + split.lon);
 	
 /*
 	var lat = req.body.lat;
 	var lon = req.body.lon;
+	
 */
 	
 //	var thing = '{"type":"MultiLineString","coordinates":[[[-73.988113,40.674389],[-73.989315,40.720462],[-74.013519,40.703026]]]}'; //works
