@@ -1,5 +1,6 @@
 var sys = require('sys');
 var ejs = require('ejs');
+var querystring = require('querystring');
 var CartoDB = require('cartodb');
 var secret = require('./secret.js');
 var mongoose = require('mongoose');
@@ -245,13 +246,16 @@ app.get('/sendCarto', function(req, res) {
 app.post('/sendCarto', function(req, res) {
 	
 	var body = req.body.Body;
-	//var split = querystring.parse(body);
-	
-	console.log('Message Body ' + body);
+	var split = querystring.parse(body);
+//	var lat = split.lat;
+//	var lon = split.lon;
+
+	console.log('Lat = ' + split.lat + ' - Lon = ' + split.lon);
 	
 /*
 	var lat = req.body.lat;
 	var lon = req.body.lon;
+*/
 	
 //	var thing = '{"type":"MultiLineString","coordinates":[[[-73.988113,40.674389],[-73.989315,40.720462],[-74.013519,40.703026]]]}'; //works
 //	var thing = '{"type":"Point","coordinates":[-74.013519,40.703026]}';
@@ -270,7 +274,6 @@ app.post('/sendCarto', function(req, res) {
 	    console.log("some error ocurred from CartoDB");
 	    //console.log(err);
 	});
-*/
 
 	res.send('here');
 
