@@ -25,6 +25,8 @@ require('./models').configureSchema(schema, mongoose);
 var SMS = mongoose.model('SMS');
 var Neighbor = mongoose.model('Neighbor');
 
+var neighborNumber = ['1'];
+
 /*********** End Database CONFIGURATION *****************/ 
     
 /*********** SERVER CONFIGURATION *****************/
@@ -81,29 +83,8 @@ app.get('/', function(request, response) {
 	response.render('location.html');
 });
 
-app.get('/info', function(request, response){
-	
-	response.render('info.html')
-});
-
-
-app.get('/about', function(request, response){
-	var templateData = {
-		pageTitle : 'NYC Trash Blog'
-	};
-	
-	response.render('about.html', templateData);
-});
-
-app.get('/experience', function(request, response){
-	
-	response.render('experience.html');
-	
-});
 
 app.get('/incoming', function(request, response) {
-
-
 
 	response.send('<form method="POST" action="/incoming">' +
 					'To: <input type="text" name="To" value="+17654307001" />' +					
@@ -215,9 +196,18 @@ app.get('/location', function(request, response) {
 // Create a function to handle our incoming SMS requests (POST request)
 app.post('/location', function(req, res) {
   // Extract the From and Body values from the POST data
+  var smsBody = req.body.Body; // this is from twilio
+  
+  //need to parse lat and long
 
+
+  // this is for form feild testing
   var lat = req.body.lat;
   var lon = req.body.lon;
+
+  //store values into the location database
+  
+  //
 
 
   res.render('location.html')
@@ -247,37 +237,50 @@ app.get('/sendCarto', function(req, res) {
 	res.send('<form method="POST" action="/sendCarto">' +
 					'Lat: <input type="text" name="lat" />' +					
 					'Lon: <input type="text" name="lon" />' +					
-					'<input type="submit" />'+
+					'<input type="submit" />' +
 					'</form>');	
 	
 });
 
 app.post('/sendCarto', function(req, res) {
 	
-	// connect to the database
-	client.on('connect', function(){
-		console.log('connected');
-		client.query("select * from life_of_trash limit 5");
-	});
+	var body = req.body.Body;
+	var split = querystring.parse(body);
 	
-	var message = client.query("select * from life_of_trash", {table: 'life_of_trash'});
-	console.log('here');
-	console.log(message);
+	console.log(split.lat);
+	
+	var lat = req.body.lat;
+	var lon = req.body.lon;
+	
+//	var thing = '{"type":"MultiLineString","coordinates":[[[-73.988113,40.674389],[-73.989315,40.720462],[-74.013519,40.703026]]]}'; //works
+//	var thing = '{"type":"Point","coordinates":[-74.013519,40.703026]}';
+	
+	// use the form to post lat/lon coordinates - NOTE: CartoDB recieves them as lon/lat	
+	var location = '{"type":"Point","coordinates":['+lon+','+lat+']}';
+	
+	// send individual lat, lon values to cartoDB
+	//client.query('INSERT INTO life_of_trash (lat, lon) VALUES (' + lat + ',' + lon + ');');  //this works
+	
+	// send geojson values
+	client.query('INSERT INTO trash_track (the_geom) VALUES (ST_SetSRID(ST_GeomFromGeoJSON(\'' + location + '\'), 4326));'); //this works	
+
+	// catch any errors from cartodb
+	client.on('error', function(err) {
+	    console.log("some error ocurred from CartoDB");
+	    console.log(err);
+	});
+
 	res.send('here');
 
-	// do something
-	
-	// close the database
-	
-	
-//example {"type":"MultiLineString","coordinates":[[[-73.988113,40.674389],[-73.989315,40.720462],[-74.013519,40.703026]]]}
 });
 
 app.get('/neighbor', function(req, res){
 
 
 	res.send('<form method="POST" action="/neighbor">' +
-					'from: <input type="text" name="Body" />' +									
+					'Body: <input type="text" name="Body" />' +	
+					'who is it going to: <input type="text" name="From" />' +	
+					'Twilio Number: <input type="text" name="To" />' +									
 					'<input type="submit" />'+
 					'</form>');	
   
@@ -314,6 +317,17 @@ app.post('/neighbor', function(req, res){
 	console.log('From : ' + from)
 	//Twilio Numbers: Building 1 : 16464612494, Building 2 : 16464612588, Building 3 : 16464612530
 	// Building 4 : 16464309891, Building 5 : 16464025754,
+
+	for(var i=0;i<neighborNumber.length; i++){
+		if(neighborNumber[i] == from ){
+			console.log('Neighbor Number : ' + neighborNumber[i]);
+			
+			
+		} else {
+			neighborNumber.push(from);
+		}
+	}
+
 
 
 	if(to == '+16464612494'){
@@ -370,7 +384,7 @@ app.get('/neighbor/:number', function(req, res) {
 
 	// Here, i need to take the :number and use it to pull out just the numbers that I want
 
-	var number = req.params.number;
+	var number = req.body.number;
 	number += "<hr>";
 	console.log(number);
 	
