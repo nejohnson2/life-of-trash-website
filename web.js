@@ -245,9 +245,9 @@ app.get('/sendCarto', function(req, res) {
 app.post('/sendCarto', function(req, res) {
 	
 	var body = req.body.Body;
-	var split = querystring.parse(body);
+	//var split = querystring.parse(body);
 	
-	console.log(split.lat);
+	console.log(body);
 	
 	var lat = req.body.lat;
 	var lon = req.body.lon;
@@ -271,6 +271,12 @@ app.post('/sendCarto', function(req, res) {
 	});
 
 	res.send('here');
+
+/*
+querystring.parse('foo=bar&baz=qux&baz=quux&corge')
+// returns
+{ foo: 'bar', baz: ['qux', 'quux'], corge: '' }
+*/
 
 });
 
