@@ -26,7 +26,7 @@ require('./models').configureSchema(schema, mongoose);
 var SMS = mongoose.model('SMS');
 var Neighbor = mongoose.model('Neighbor');
 
-var neighborNumber = ['1'];
+var neighborNumber = [];
 
 /*********** End Database CONFIGURATION *****************/ 
     
@@ -237,7 +237,8 @@ app.get('/sendCarto', function(req, res) {
 
 	res.send('<form method="POST" action="/sendCarto">' +
 					'Lat: <input type="text" name="lat" />' +					
-					'Lon: <input type="text" name="lon" />' +					
+					'Lon: <input type="text" name="lon" />' +
+					'Body: <input type="text" name="body" />' +					
 					'<input type="submit" />' +
 					'</form>');	
 	
@@ -245,21 +246,25 @@ app.get('/sendCarto', function(req, res) {
 
 app.post('/sendCarto', function(req, res) {
 	
+	// get the body of the text message
 	var body = req.body.Body;
+	var splitArray = body.split(",")
+	var lat = splitArray[0];
+	var lon = splitArray[1];
+	
+	console.log(lat + " , " + lon);
+	
+/*
+	// parse the body of the text message  (ex. lat=70%lon=45)
 	var split = querystring.parse(body);
 	var lat = split.lat;
 	var lon = split.lon;
-
-	console.log('Lat = ' + split.lat + ' - Lon = ' + split.lon);
-	
-/*
-	var lat = req.body.lat;
-	var lon = req.body.lon;
-	
 */
-	
-//	var thing = '{"type":"MultiLineString","coordinates":[[[-73.988113,40.674389],[-73.989315,40.720462],[-74.013519,40.703026]]]}'; //works
-//	var thing = '{"type":"Point","coordinates":[-74.013519,40.703026]}';
+
+	//console.log('Lat = ' + split.lat + ' - Lon = ' + split.lon);
+
+	//var thing = '{"type":"MultiLineString","coordinates":[[[-73.988113,40.674389],[-73.989315,40.720462],[-74.013519,40.703026]]]}'; //works
+	//var thing = '{"type":"Point","coordinates":[-74.013519,40.703026]}';
 	
 	// use the form to post lat/lon coordinates - NOTE: CartoDB recieves them as lon/lat	
 	var location = '{"type":"Point","coordinates":['+lon+','+lat+']}';
@@ -277,12 +282,6 @@ app.post('/sendCarto', function(req, res) {
 	});
 
 	res.send('here');
-
-/*
-querystring.parse('foo=bar&baz=qux&baz=quux&corge')
-// returns
-{ foo: 'bar', baz: ['qux', 'quux'], corge: '' }
-*/
 
 });
 
@@ -316,6 +315,7 @@ app.get('/neighbor', function(req, res){
 app.post('/neighbor', function(req, res){
 	// Setup DB instance
 	var neighbor = new Neighbor();
+	var help = ['EMERGENCIES', 'CHORES/LABOR', 'SOCIALIZING'];
 	
 	//Parse the parameters of the incoming SMS from twilio
 	var body = req.body.Body;
@@ -330,20 +330,23 @@ app.post('/neighbor', function(req, res){
 	//Twilio Numbers: Building 1 : 16464612494, Building 2 : 16464612588, Building 3 : 16464612530
 	// Building 4 : 16464309891, Building 5 : 16464025754,
 
-	for(var i=0;i<neighborNumber.length; i++){
-		if(neighborNumber[i] == from ){
-			console.log('Neighbor Number : ' + neighborNumber[i]);
-			
-			
-		} else {
-			neighborNumber.push(from);
-		}
-	}
-
-
+	if( !(neighborNumber.indexOf(from) >= 0))
+		neighborNumber.push(from);
+		
+	console.log(neighborNumber)
 
 	if(to == '+16464612494'){
-		message = "Thanks for registering with Building 1.";
+		if( body == 'I want to help' || 'yes' ){
+			message = "Thanks for registering with Building 1.  How are you willing to help? A)EMERGENCIES B)CHORES/LABOR C)SOCIAL Choose all that apply.";
+		} else if(body == 'a' || 'A' || 'EMERGENCIES' || 'A)EMERGENCIES' || 'emergencies' || 'a)emergencies') {
+			message = "Thanks for helping with EMERGENCIES.  We will send a text when a neighbor is in need of help or text your needs to this number."; 
+		} else if (body == 'b' || 'B' || 'CHORES/LABOR' || 'B)CHORES/LABOR' || 'chores/labor' || 'b)chores/labor' || 'chores' || 'labor') {
+			message = "Thanks for helping with CHORES/LABOR.  We will send a text when a neighbor is in need of help or text your needs to this number.";
+		} else if (body == 'c' || 'C' || 'SOCIAL' || 'social' || 'C)SOCIAL' || 'c)social'){
+			message = "Thanks for being SOCIAL.  We will send a text when a neighbor is in need or text your needs to this number.";
+		} else { 
+			message = "To register, text 'I want to help.' to 1-646-461-2494";
+		}
 	} else if(to == '+16464612588' ) {
 		message = "Thanks for registering with Building 2.";
 	} else if(to == '+16464612530' ) {
@@ -355,7 +358,33 @@ app.post('/neighbor', function(req, res){
 	} else {
 		message = "Thanks for registering.";
 	}
+	console.log(message);
+	// Registration Function:
+	// Start with: 'I want to help"
+	// Thanks for contacting neighbors of ______(Building).  To signu up, reply 'I want to help'.
+	// Thanks for registering.  How are you willing to help? A)EMERGENCIES B)CHORES/LABOR C)SOCIAL? Choose all that apply.
+		// if nothing 
+	// B
+	// Thanks for 'helping with ________'.  We will send a text when a neighbor is in need of help.  If you need help, text this number otherwise we  
+	// We will send a text when a neighbor needs 'help with _______a'.  If you need help, text your needs to 88888. 
 
+
+	//Help Function:
+	//
+	// I need help with ___ at __(time) at __(apartment). 
+	//
+	// We have contacted your neighbors and will update you shortly.
+	//
+	// send sms to people who are registered
+	// 
+	// A neighbor needs help with ______ at _(time)_ at _(location)_.  Text YES if you can help.
+	//
+	// if YES - Thanks for helping your neighbor!
+	// if NO - Thanks.  Maybe next time.
+	//
+	// after a half hour - neighbors are unavailable
+	//	
+	// Send a text to those signed up with 10
 
 	Twilio.SMS.create({to: from, from: to, body: message}, function(err,res) {
 		console.log('Up Up and Away...SMS Sent!');
