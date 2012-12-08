@@ -81,7 +81,7 @@ client.on('error', function(err) {
 
 app.get('/', function(request, response) {
 
-	response.render('location.html');
+	response.render('splash.html', {layout: false });
 });
 
 app.get('/splash', function(request, response) {

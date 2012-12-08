@@ -29,11 +29,11 @@ cursor: pointer;
 }
 
 .logoicon:hover img{
-opacity: 1;
+opacity: 0.3;
 }
 .logoicon img{
 margin-bottom: 20px;
-opacity: 0.2;
+opacity: 1;
 }
 .container-narrow {
 	margin: 0 auto;
