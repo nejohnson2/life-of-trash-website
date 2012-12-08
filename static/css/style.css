@@ -1,5 +1,9 @@
 body {
-	
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+.row {
+	text-align: center;
 }
 
 .header{
@@ -12,4 +16,37 @@ body {
 	font-size: 86px;
 	line-height: 80px;
 }
+#iconlist{
+height: 400px;
+}
 
+.logoicon{
+float: left;
+text-align: center;
+font-weight: bold;
+font-size:16px;
+cursor: pointer;
+}
+
+.logoicon:hover img{
+opacity: 1;
+}
+.logoicon img{
+margin-bottom: 20px;
+opacity: 0.2;
+}
+.container-narrow {
+	margin: 0 auto;
+	max-width: 700px;
+}
+.container-narrow > hr {
+	margin: 30px 0;
+}
+.jumbotron {
+	margin: 60px 0;
+	text-align: center;
+}
+.jumbotron h1 {
+	font-size: 72px;
+	line-height: 1;
+}

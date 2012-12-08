@@ -84,7 +84,26 @@ app.get('/', function(request, response) {
 	response.render('location.html');
 });
 
+app.get('/splash', function(request, response) {
 
+	response.render('splash.html', {layout: false });
+});
+app.get('/info', function(request, response) {
+
+	response.render('info.html');
+});
+app.get('/map', function(request, response) {
+
+	response.render('map.html');
+});
+app.get('/engage', function(request, response) {
+
+	response.render('engage.html');
+});
+app.get('/blog', function(request, response) {
+
+	response.render('blog.html');
+});
 app.get('/incoming', function(request, response) {
 
 	response.send('<form method="POST" action="/incoming">' +
