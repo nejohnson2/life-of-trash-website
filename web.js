@@ -104,6 +104,10 @@ app.get('/blog', function(request, response) {
 
 	response.render('blog.html');
 });
+app.get('/success', function(request, response) {
+
+	response.render('success.html');
+});
 app.get('/incoming', function(request, response) {
 
 	response.send('<form method="POST" action="/incoming">' +
