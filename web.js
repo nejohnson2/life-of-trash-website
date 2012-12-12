@@ -1,5 +1,6 @@
 var sys = require('sys');
 var ejs = require('ejs');
+
 var querystring = require('querystring');
 var CartoDB = require('cartodb');
 var secret = require('./secret.js');
@@ -117,6 +118,11 @@ app.get('/post3', function(request, response) {
 	response.render('post3.html');
 });
 app.get('/post4', function(request, response) {
+
+	response.render('post4.html');
+});
+
+app.get('/app', function(request, response) {
 
 	response.render('post4.html');
 });
