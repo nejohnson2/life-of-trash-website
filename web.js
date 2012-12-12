@@ -116,6 +116,10 @@ app.get('/post3', function(request, response) {
 
 	response.render('post3.html');
 });
+app.get('/post4', function(request, response) {
+
+	response.render('post4.html');
+});
 app.get('/incoming', function(request, response) {
 
 	response.send('<form method="POST" action="/incoming">' +
