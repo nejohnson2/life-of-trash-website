@@ -315,7 +315,7 @@ app.post('/sendCarto', function(req, res) {
 	//client.query('INSERT INTO life_of_trash (lat, lon) VALUES (' + lat + ',' + lon + ');');  //this works
 	
 	// send geojson values
-	client.query('INSERT INTO trash_track (the_geom, number) VALUES (ST_SetSRID(ST_GeomFromGeoJSON(\'' + location + '\'),\'' + from + '\', 4326));'); //this works	
+	client.query('INSERT INTO trash_track (the_geom, number) VALUES (ST_SetSRID(ST_GeomFromGeoJSON(\'' + location + '\'), 4326),\'' + from + '\');'); //this works	
 
 	// catch any errors from cartodb
 	client.on('error', function(err) {
