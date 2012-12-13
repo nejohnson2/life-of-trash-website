@@ -292,9 +292,10 @@ app.post('/sendCarto', function(req, res) {
 	var splitArray = body.split(",")
 	var lat = splitArray[0];
 	var lon = splitArray[1];
+	var from = req.body.From;
 	
 	console.log(lat + " , " + lon);
-	
+	console.log("From: " + from);
 /*
 	// parse the body of the text message  (ex. lat=70%lon=45)
 	var split = querystring.parse(body);
@@ -314,7 +315,7 @@ app.post('/sendCarto', function(req, res) {
 	//client.query('INSERT INTO life_of_trash (lat, lon) VALUES (' + lat + ',' + lon + ');');  //this works
 	
 	// send geojson values
-	client.query('INSERT INTO trash_track (the_geom) VALUES (ST_SetSRID(ST_GeomFromGeoJSON(\'' + location + '\'), 4326));'); //this works	
+	client.query('INSERT INTO trash_track (the_geom, number) VALUES (ST_SetSRID(ST_GeomFromGeoJSON(\'' + location + '\'),\'' + from + '\', 4326));'); //this works	
 
 	// catch any errors from cartodb
 	client.on('error', function(err) {
@@ -462,51 +463,6 @@ app.post('/neighbor', function(req, res){
 */
 });
 
-app.get('/neighbor/:number', function(req, res) {
-
-	// Here, i need to take the :number and use it to pull out just the numbers that I want
-
-	var number = req.body.number;
-	number += "<hr>";
-	console.log(number);
-	
-	
-	var query = Neighbor.find({});
-	//query.sort('date', -1); //sort by date in decending order
-	
-	query.exec({}, function(err, allNeighbors){
-		
-		//prepare template data
-		templateData = {
-			neighbor : allNeighbors
-		};
-		
-	res.send(templateData);
-	
-	});
-
-	
-/*
-	
-	var query = Neighbor.find({});
-	//	query.sort('Date',-1);
-	
-	query.exec({}, function(err, allNeighbors){
-	
-	neighborData = {
-		neighbors : allNeighbors
-	};
-	
-	res.render(neighborData);
-	
-	
-	});
-	
-	
-	res.send(number)
-*/
-	
-});
 
 
 var port = process.env.PORT || 3000;
