@@ -82,7 +82,7 @@ client.on('error', function(err) {
 
 app.get('/', function(request, response) {
 
-	response.render('splash.html', {layout: false });
+	response.render('map.html');
 });
 
 app.get('/splash', function(request, response) {
