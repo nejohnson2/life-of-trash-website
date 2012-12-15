@@ -1,26 +1,42 @@
 <div class="container-narrow" style="text-align: left;">
-	<h1 style="text-align: center;"> Successful first launch!</h1>
-			<p class="lead" style="text-align:left; text-indent: 50px;"> Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,  Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
+	<h1 style="text-align: center;"> Successful testing</h1>
+		<p class="lead" style="text-align:left; text-indent: 50px;"> After weeks of development, the “Life of Trash” app has undergone preliminary testing with great success, and a few bumps.  App development began on the android platform primarily because of its open source nature, access to a large community and ability to be deployed on less expensive phones.  The first iteration of the app focused mainly on the essential elements to make the app useful, location updates and sending automatic SMS’s.   </p>
+
+		<p class="lead" style="text-align:left; text-indent: 50px;"> After the app was built in a basic form, I first began to set the automatic SMS messages every five minutes while I went for a brief walk around the neighborhood.  Upon returning and access the Life of Trash website to verify coordinate accuracy and proper automation.
+ </p>
+ 
+ 		<p class="lead" style="text-align:left; text-indent: 50px;"> The results seemed positive with successful coordinates and regular SMS messages being sent over the course of the walk.  I then moved the testing into a second phase to check the duration of the phones life while only running the app.  This required charging the phone fully and launching the app until the phone’s battery died.  
+
+ </p>
+ 	<h1>Initial Failures</h1>
+ <p class="lead" style="text-align:left; text-indent: 50px;"> The second phase of testing began on a Thursday evening as went upon my normal routine.  The following morning I decided to verify the app was still performing by again checking into my twilio account.  To my surprise, the account had been suspended due to lack of funds which was surprising given the low cost of  SMS messages and the amount of fund that were previously in the account. </p>
+
+ 		<img style="
+    display: block;
+    margin-left: auto;
+    margin-right: auto; " src="/img/smsMessages-01.png">
+
+
+	
+	<p class="lead" style="text-align:left; text-indent: 50px;"> As I began to investigate, I realized that the app had fired over 2,000 messages through the night using all of the funds in the account.  Though the phone was supposed to send and SMS every 15minuets, it began firing messages every 30 seconds.
+</p>
+	<p class="lead">Looking into what caused this in the code, I realized that the function to send an SMS was mistakenly placed inside the function that checks for new locations.  Therefor, each time the phone looked for a new location, it sent an SMS with that new location.  Lesson learned.</p>
+
 	<img style="
     display: block;
     margin-left: auto;
     margin-right: auto; " src="/img/successTwilioChart-01.png">
+
+
+	<hr>
 	
-	<p class="lead" style="text-align:left; text-indent: 50px;"> Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,  Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
-	<p class="lead">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
-	<hr>
-	<h1>Initial Failures.</h1>
-	<p class="lead" style="text-align:left; text-indent: 50px;"> Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,  Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
-	<p class="lead" style="text-align:left; text-indent: 50px;"> Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,  Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
-		<img style="
-    display: block;
-    margin-left: auto;
-    margin-right: auto; " src="/img/smsMessages-01.png">
-	<p class="lead" style="text-align:left; text-indent: 50px;"> Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,  Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
-	<hr>
-	<h1>Looking at the code.</h1>
+	<h1>Looking at the code</h1>
 				
-	<p class="lead">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
+	<p class="lead">Android programing has many interesting aspects of which I was able to take advantage .  One of the more important aspects to the app is the ability to send and automated SMS.  This requires the use of an alarm in combination with a broadcast receiver.</p>
+
+	<p class="lead">The broadcast receiver is function that gets called when a core function of the phone is setup.  One core function which is available to android programming is an alarm.  With a few lines of code, one can set an alarm to send a message which the broadcast receiver is setup to listen.  When the broadcast receiver receives this message, it can perform other tasks available to it.</p>
+
+	<p class="lead">The below code takes the current time, adds 15minutes and then sets the AlarmManager to send a message after the 15 minutes has expired thus triggering the SMS.</p>	
 	
 	<pre style="text-align:left;">public void setTimer(){
 	
@@ -45,8 +61,9 @@
     
    	<hr>
 	<h1>Future Iterrations</h1>
-	<p class="lead" style="text-align:left; text-indent: 50px;"> Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,  Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
-<p class="lead" style="text-align:left; text-indent: 50px;"> Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac,  Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, </p>
+	<p class="lead" style="text-align:left; text-indent: 50px;">As of right now the basic functionality of the app is working.  An alarm is set to fire every 15 minutes which then causes the phone to get its current coordinates and send them to a specific phone number via SMS.  
+ </p>
+<p class="lead" style="text-align:left; text-indent: 50px;"> In the next iteration, I plan on accessing the core services of the phone and suspend automate a suspension of those functions.  This will cause the phone to shut down as much as possible until the moment when it needs to gather its location and send those coordinates back to the central server.  This will be an important element because it will increase the battery life by a few days allow the tracking of trash to extend further.</p>
 
 					
 </div>
