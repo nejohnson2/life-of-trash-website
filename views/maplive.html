@@ -1,61 +1,53 @@
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <title>
+        
+            Life of Trash
+        
+        </title>
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.css" />
 
-<!--
-<script type="text/javascript">
 
-  $(function() {
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link href="/css/example.css" media="screen" rel="stylesheet" type="text/css" />
 
-    var 
-    user  = "nejohnson2",
-    table = "trash_track";
-    lat   = 40.719599,
-    lng   = -74.000902,
-    zoom  = 13;
 
-    // Define the initial options
-    var cartodbMapOptions = {
-      zoom: zoom,
-      center: new google.maps.LatLng( lat, lng ),
-      disableDefaultUI: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+        <link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+        
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+        <script src="http://libs.cartocdn.com/cartodb.js/v2/cartodb.js"></script>
+    </head>
 
-    // Initialize the map
-    var map = new google.maps.Map(document.getElementById("map"),cartodbMapOptions);
+    <body>
 
-    // Define the map styles
-    var map_style = [{
-      stylers: [{ saturation: -65 }, { gamma: 1.52 }] }, {
-      featureType: "administrative", stylers: [{ saturation: -95 }, { gamma: 2.26 }] }, {
-      featureType: "water", elementType: "labels", stylers: [{ visibility: "off" }] }, {
-      featureType: "administrative.locality", stylers: [{ visibility: 'off' }] }, {
-      featureType: "road", stylers: [{ visibility: "simplified" }, { saturation: -99 }, { gamma: 2.22 }] }, {
-      featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }, {
-      featureType: "road.arterial", stylers: [{ visibility: 'off' }] }, {
-      featureType: "road.local", elementType: "labels", stylers: [{ visibility: 'off' }] }, {
-      featureType: "transit", stylers: [{ visibility: 'off' }] }, {
-      featureType: "road", elementType: "labels", stylers: [{ visibility: 'off' }] }, {
-      featureType: "poi", stylers: [{ saturation: -55 }]
-    }];
-
-    // Set the style
-    map.setOptions({ styles: map_style });
-
-    // Define the layer
-    var cartoDBLayer = {
-      getTileUrl: function(coord, zoom) {
-        return "https://" + user + ".cartodb.com/tiles/" + table + "/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-      },
-      tileSize: new google.maps.Size(256, 256)
-    };
-
-    // Add the CartoDB tiles
-    map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType(cartoDBLayer));
-
-  });
-
-</script>
--->
+        <div class="container">
+          <div class="masthead">
+            <ul class="nav nav-pills pull-right">      
+            <li><a href="/maplive">Map</a></li> 
+            <li><a href="/info">Info</a></li> 
+            <li><a href="/engage">Engage</a></li> 
+            <li><a href="/blog">Stories</a></li> 
+            </ul>
+            <h3 class="muted"><a class="brand" href="/location"><img src="/img/mainlogo.png"></a></h3>
+            <hr>
+          </div>          
+          <div class="content">
+            <div id="map"></div>
+          </div>
+        </div>
+    <footer class="footer">
+      <div class="container">
+        <hr></hr>
+        <p> Created by Nicholas Johnson - nejohnson2@gmail.com</p>
+      </div>
+    </footer>
+   
+</body>
 
 <script type="text/javascript">
   function main() {
@@ -150,11 +142,5 @@
   }
   window.onload = main;
 
-</script>
-
-<div id="map"></div>
-
-
-
-
-
+</script>    
+</html>

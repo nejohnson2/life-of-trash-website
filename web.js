@@ -82,7 +82,7 @@ client.on('error', function(err) {
 
 app.get('/', function(request, response) {
 
-	response.render('map.html');
+	response.render('maplive.html', {layout: false });
 });
 
 app.get('/splash', function(request, response) {
@@ -93,9 +93,9 @@ app.get('/info', function(request, response) {
 
 	response.render('info.html');
 });
-app.get('/map', function(request, response) {
+app.get('/maplive', function(request, response) {
 
-	response.render('map.html');
+	response.render('maplive.html', {layout: false });
 });
 app.get('/engage', function(request, response) {
 
