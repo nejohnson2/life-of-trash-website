@@ -1,6 +1,6 @@
 
 
-<!--
+
 <script type="text/javascript">
 
   $(function() {
@@ -55,105 +55,6 @@
   });
 
 </script>
--->
-
-<script type="text/javascript">
-  function main() {
-
-    var 
-    user  = "nejohnson2",
-    table = "trash_track",
-    // user  = "viz2",
-    // table = "trash_points",
-    lat   = 40.719599,
-    lng   = -74.000902,
-    zoom  = 13,
-    latest = null,
-    refresh = 1,
-    map = null;
-
-    var sql = new cartodb.SQL({ user: user });
-    function updateMap(){
-      //fit the bounds of the dataset
-      sql.execute('select created_at from '+table+' order by created_at desc limit 1').done(function(data) {
-          console.log(data.rows[0].created_at)
-          if (latest != data.rows[0].created_at){
-            latest = data.rows[0].created_at;
-            refresh++;
-            layer.setQuery("SELECT the_geom_webmercator, ltrim( to_char( created_at AT TIME ZONE 'EST', 'HH12:MI'),'0') as stamp, to_char(created_at AT TIME ZONE 'EST', 'Day at HH12:MI') as phone_seen_here, 'points' as layer FROM {{table_name}} UNION ALL SELECT ST_MakeLine(the_geom_webmercator ORDER BY created_at) as the_geom_webmercator, null as stamp, null as phone_seen_here, 'line' as layer FROM {{table_name}} UNION ALL (SELECT the_geom_webmercator, '"+refresh+"' as stamp, null as phone_seen_here, 'top' as layer FROM {{table_name}} ORDER BY created_at DESC LIMIT 1)");
-          }
-          setTimeout(updateMap, 300000)
-      }).error(function(){
-          setTimeout(updateMap, 30000)
-      });
-
-    }
-    // Define the initial options
-    var cartodbMapOptions = {
-      zoom: zoom,
-      center: new google.maps.LatLng( lat, lng ),
-      disableDefaultUI: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    // Initialize the map
-    map = new google.maps.Map(document.getElementById("map"),cartodbMapOptions);
-
-    // Define the map styles
-    var map_style = [{
-      stylers: [{ saturation: -65 }, { gamma: 1.52 }] }, {
-      featureType: "administrative", stylers: [{ saturation: -95 }, { gamma: 2.26 }] }, {
-      featureType: "water", elementType: "labels", stylers: [{ visibility: "off" }] }, {
-      featureType: "administrative.locality", stylers: [{ visibility: 'off' }] }, {
-      featureType: "road", stylers: [{ visibility: "simplified" }, { saturation: -99 }, { gamma: 2.22 }] }, {
-      featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }, {
-      featureType: "road.arterial", stylers: [{ visibility: 'off' }] }, {
-      featureType: "road.local", elementType: "labels", stylers: [{ visibility: 'off' }] }, {
-      featureType: "transit", stylers: [{ visibility: 'off' }] }, {
-      featureType: "road", elementType: "labels", stylers: [{ visibility: 'off' }] }, {
-      featureType: "poi", stylers: [{ saturation: -55 }]
-    }];
-
-    // Set the style
-    map.setOptions({ styles: map_style });
-
-
-    var layerUrl = 'http://nejohnson2.cartodb.com/api/v1/viz/13030/viz.json';
-    //var layerUrl = 'http://viz2.cartodb.com/api/v1/viz/3000/viz.json'
-
-    var layerOptions = {
-              query: "SELECT the_geom_webmercator, ltrim( to_char( created_at AT TIME ZONE 'EST', 'HH12:MI'),'0') as stamp, to_char(created_at AT TIME ZONE 'EST', 'Day at HH12:MI') as phone_seen_here, 'points' as layer FROM {{table_name}} UNION ALL SELECT ST_MakeLine(the_geom_webmercator ORDER BY created_at) as the_geom_webmercator, null as stamp, null as phone_seen_here, 'line' as layer FROM {{table_name}} UNION ALL (SELECT the_geom_webmercator, null as stamp, null as phone_seen_here, 'top' as layer FROM {{table_name}} ORDER BY created_at DESC LIMIT 1)",
-              tile_style: " #{{table_name}}::bottom [mapnik-geometry-type=linestring] { c/line-width: 0.75; c/line-color: #C51B7D; c/line-opacity: 0.10; c/line-smooth: 3.0; c/line-join: round; c/line-comp-op: dst-over; a/line-width: 1.0; a/line-color: #C51B7D; a/line-opacity: 0.15; a/line-smooth: 2.0; a/line-join: round; a/line-comp-op: dst-over; line-width: 2; line-color: #C51B7D; line-opacity: 0.6; line-dasharray: 10,3; line-smooth: 1.0; line-join: round;  } #{{table_name}}::top [mapnik-geometry-type=point] { [layer = 'points']{    marker-fill: black;    marker-opacity: 1;    marker-width: 8;    marker-line-color: #C51B7D;    marker-line-width: 2;    marker-line-opacity: 0.9;    marker-placement: point;    marker-type: ellipse; marker-allow-overlap: false; text-size: 12; text-name: '[stamp]'; text-face-name: 'DejaVu Sans Bold'; text-allow-overlap:false; text-fill: #C51B7D; text-orientation: 35; text-allow-overlap: false; text-halo-fill: rgba(255,255,255,0.7); text-halo-radius: 2; text-comp-op: src-over; text-dy: -20; text-dx: 4; } [layer = 'top']{    marker-fill: #C51B7D;    marker-opacity: 1;    marker-width: 15;    marker-line-color: black;    marker-line-width: 2;    marker-line-opacity: 0.9;    marker-placement: point;    marker-type: ellipse; marker-allow-overlap: true; }  }",
-              interactivity: false
-    }
-    //fit the bounds of the dataset
-    sql.getBounds('select * from '+table).done(function(bounds) {
-      var rectBounds = new google.maps.LatLngBounds(
-          new google.maps.LatLng(bounds[1][0], bounds[1][1]),
-          new google.maps.LatLng(bounds[0][0], bounds[0][1]));
-        map.fitBounds(rectBounds);
-    });
-    
-    cartodb.createLayer(map, layerUrl, layerOptions)
-     .on('done', function(newlayer) {
-      layer = newlayer
-      map.overlayMapTypes.setAt(0, layer);
-    }).on('error', function() {
-      //log the error
-    });
-    sql.execute('select created_at from '+table+' order by created_at desc limit 1').done(function(data) {
-        latest = data.rows[0].created_at;
-        setTimeout(updateMap, 300000)
-    }).error(function(){
-        setTimeout(updateMap, 500000)
-    });
-  }
-  window.onload = main;
-
-</script>
-
-<div id="map"></div>
-
 
 
 
