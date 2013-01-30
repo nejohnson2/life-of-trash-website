@@ -122,6 +122,11 @@ app.get('/post4', function(request, response) {
 	response.render('post4.html');
 });
 
+app.get('/post5', function(request, response) {
+
+	response.render('post5.html');
+});
+
 app.get('/app', function(request, response) {
 
 	response.render('post4.html');
