@@ -142,6 +142,13 @@ app.get('/incoming', function(request, response) {
 	//response.render("layout.html");
 });
 
+app.get('/landfill', function(request, response){
+	
+
+	
+	response.render('landfill.html', {layout: false });
+});
+
 // Create a function to handle our incoming SMS requests (POST request)
 app.post('/incoming', function(req, res) {
   // Extract the From and Body values from the POST data
@@ -359,6 +366,7 @@ app.get('/neighbor', function(req, res){
 */
 });
 
+/*
 app.post('/neighbor', function(req, res){
 	// Setup DB instance
 	var neighbor = new Neighbor();
@@ -466,7 +474,9 @@ app.post('/neighbor', function(req, res){
 
     res.send(twiml, {'Content-Type':'text/xml'}, 200);
 */
+/*
 });
+*/
 
 
 
