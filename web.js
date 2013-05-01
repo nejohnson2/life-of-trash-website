@@ -82,7 +82,8 @@ client.on('error', function(err) {
 
 app.get('/', function(request, response) {
 
-	response.render('maplive.html', {layout: false });
+/* 	response.render('maplive.html', {layout: false }); */
+	response.render('blog.html');
 });
 
 app.get('/splash', function(request, response) {
@@ -126,6 +127,14 @@ app.get('/post5', function(request, response) {
 
 	response.render('post5.html');
 });
+app.get('/post7', function(request, response) {
+
+	response.render('post7.html');
+});
+app.get('/post8', function(request, response) {
+
+	response.render('post8.html');
+});
 
 app.get('/app', function(request, response) {
 
@@ -144,9 +153,7 @@ app.get('/incoming', function(request, response) {
 
 app.get('/landfill', function(request, response){
 	
-
-	
-	response.render('landfill.html', {layout: false });
+	response.render('engage/landfill.html', {layout : true});
 });
 
 // Create a function to handle our incoming SMS requests (POST request)

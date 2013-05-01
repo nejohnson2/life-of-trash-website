@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<!--     <meta http-equiv="Access-Control-Allow-Origin" content="*"> -->
+
+
+    <!--Edit the title of the page-->
+    <title>A Landfill Near You</title>
+    <meta name="description" content="All Landfill Locaions from EPA">
+    <meta name="author" content="Nicholas Johnson">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        
+    <!--CartoDB stylesheet-->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.css" />
+    
+	<!--Website stylesheets-->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="/css/example.css" media="screen" rel="stylesheet" type="text/css" />
+	
+    <!--Google Font-->
+	<link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+	
+    <!--?-->
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+    <!--CartoDB.js Library-->
+    <script src="http://libs.cartocdn.com/cartodb.js/v2/cartodb.js"></script>
+
+
+  </head>
+  <body>
+
+		  <div class="map" id="map"></div>
+		  <hr>
+		  <h1>What is this Map?</h1>
+		  <h3>Sometimes seeing is believing</h3>
+		  <p>This map contains all of site the Environmental Protection Agency(EPA) maintains in their database.  These include landfills</p>
+
+
+   <script type="text/javascript">
+	
+	var searchURL = "http://api.ipinfodb.com/v3/ip-city/?key=763a8112ab74dacd5c7f17e484b193733b9ffb9b173990a4ca4601019c591192&format=json&callback=";
+
+	$.ajax({
+	    type: "GET",
+	    url: searchURL,
+	    dataType: "jsonp",
+		success: function (response) {
+			        	        
+	        var lat = response.latitude,
+	        	lon = response.longitude,
+	        	//lat = 40.1933,	        	
+	        	//lon = -85.3864, 	        
+            	user  = "nejohnson2",
+            	table = "epa_landfill_locations",
+            	zoom = 13;
+	        
+            var sql = new cartodb.SQL({ user: user })
+            
+			var map = new L.Map('map', {})
+			
+		    var cartodbMapOptions = {
+		      zoom: zoom,
+		      center: new google.maps.LatLng( lat, lon ),
+		      disableDefaultUI: false,
+		      mapTypeId: google.maps.MapTypeId.SATELLITE
+		    }
+			
+		    var map = new google.maps.Map(document.getElementById("map"),cartodbMapOptions);
+		    
+	        // Define the map styles
+		    var map_style = [{
+		      stylers: [{ saturation: -65 }, { gamma: 1.52 }] }, {
+		      featureType: "administrative", stylers: [{ saturation: -95 }, { gamma: 2.26 }] }, {
+		      featureType: "water", elementType: "labels", stylers: [{ visibility: "off" }] }, {
+		      featureType: "administrative.locality", stylers: [{ visibility: 'off' }] }, {
+		      featureType: "road", stylers: [{ visibility: "simplified" }, { saturation: -99 }, { gamma: 2.22 }] }, {
+		      featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] }, {
+		      featureType: "road.arterial", stylers: [{ visibility: 'off' }] }, {
+		      featureType: "road.local", elementType: "labels", stylers: [{ visibility: 'off' }] }, {
+		      featureType: "transit", stylers: [{ visibility: 'off' }] }, {
+		      featureType: "road", elementType: "labels", stylers: [{ visibility: 'off' }] }, {
+		      featureType: "poi", stylers: [{ saturation: -55 }]
+		    }];
+		
+		    // Set the style
+		    map.setOptions({ styles: map_style });
+		    		    
+	        
+/*
+	        sql.execute('SELECT ST_X(ST_Centroid(the_geom)) as longitude,ST_Y(ST_Centroid(the_geom)) as latitude,  ST_Distance(the_geom::geography, ST_PointFromText(\'POINT('+lon + " " + lat + ')\', 4326)::geography) AS distance, * FROM ' + table + ' ORDER BY distance ASC LIMIT 10').done(function(data){
+		        console.log(data);
+	        }).error(function(error){
+		       console.log("dramatic error"); 
+		       alert(error);
+	        });	 
+*/          
+	        
+	          
+			sql.getBounds('SELECT ST_X(ST_Centroid(the_geom)) as longitude,ST_Y(ST_Centroid(the_geom)) as latitude,  ST_Distance(the_geom::geography, ST_PointFromText(\'POINT('+lon + ' ' + lat + ')\', 4326)::geography) AS distance, * FROM ' + table + ' ORDER BY distance ASC LIMIT 10').done(function(bounds) {
+
+				var rectBounds = new google.maps.LatLngBounds(
+				  new google.maps.LatLng(bounds[1][0], bounds[1][1]),
+				  new google.maps.LatLng(bounds[0][0], bounds[0][1]));
+				  map.fitBounds(rectBounds);				
+			
+			    console.log(bounds);
+			}).error(function(error){
+				console.log(error);
+			});
+		    
+		    
+		    var layerOptions = {
+		              query: "SELECT * FROM epa_landfill_locations",
+		              tile_style: "#epa_landfill_locations [mapnik-geometry-type=point] {marker-fill: #FF6600;    marker-opacity: 0.5; marker-width: 12; marker-line-color: white; marker-line-width: 0; marker-line-opacity: 0.9;    marker-placement: point; marker-type: ellipse;marker-allow-overlap: true;} [mapnik-geometry-type=linestring] {    line-color: #FF6600; line-width: 2; line-opacity: 0.7; } [mapnik-geometry-type=polygon] { polygon-fill:#FF6600;    polygon-opacity: 0.7; line-opacity:1;  line-color: #FFFFFF;}",
+		              interactivity: false
+		    }
+
+		    var layerURL = 'http://nejohnson2.cartodb.com/api/v1/viz/25388/viz.json'
+
+		    cartodb.createLayer(map, layerURL, layerOptions)
+		     .on('done', function(newlayer) {
+		      layer = newlayer
+		      map.overlayMapTypes.setAt(0, layer);
+
+		    }).on('error', function() {
+		      //log the error
+		      alert("error");
+		    });			   
+	      },
+	      error: function (xhr, ajaxOptions, thrownError) {
+	        alert(xhr.status);
+	        alert(thrownError);
+	      }
+	})
+	
+
+
+
+    </script>
+
+  </body>
+</html>
