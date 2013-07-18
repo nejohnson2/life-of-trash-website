@@ -91,6 +91,11 @@ app.get('/blog', function(request, response) {
 
 	response.render('blog.html');
 });
+app.get('/contact', function(request, response) {
+
+	response.render('contact.html');
+});
+
 app.get('/success', function(request, response) {
 
 	response.render('success.html');
@@ -123,6 +128,16 @@ app.get('/post8', function(request, response) {
 app.get('/post9', function(request, response) {
 
 	response.render('post9.html');
+});
+
+app.get('/trashtubes', function(request, response) {
+
+	response.render('trashtubes.html');
+});
+
+app.get('/archive', function(request, response) {
+
+	response.render('archive.html');
 });
 
 app.get('/app', function(request, response) {
