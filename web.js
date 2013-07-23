@@ -95,7 +95,29 @@ app.get('/contact', function(request, response) {
 
 	response.render('contact.html');
 });
+app.get('/lab', function(request, response) {
 
+	response.render('lab.html');
+});
+app.get('/citizen_research', function(request, response) {
+
+	response.render('future/citizen_research.html');
+});
+app.get('/tracking_research', function(request, response) {
+
+	response.render('future/tracking_research.html');
+});
+app.get('/education', function(request, response) {
+
+	response.render('future/education.html');
+});
+app.get('/lab-info', function(request, response) {
+
+	response.render('future/labinfo.html');
+});
+
+
+/******************************************************************/
 app.get('/success', function(request, response) {
 
 	response.render('success.html');

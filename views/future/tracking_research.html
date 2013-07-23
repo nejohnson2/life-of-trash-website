@@ -1,0 +1,59 @@
+<div class="container-marketing">
+	<div class="jumbotron">
+		<h1>Trash Tracking</h1>
+		<p class="lead">Understanding where our trash goes is one of the most fundamental questions we can explore.  This was the driving question for the <em>Life of Trash</em> project and will continue to be a motivation question for research to come.</p>
+	</div>
+	<hr>
+</div>
+
+<div class="container-narrow" style="text-align: left;">
+	<br>
+	
+	<h1>Current Status</h1>
+	<p class="lead" style="text-align:left; text-indent: 50px;">Throwing and old cell phone into the trash in order to track where you trash travels is a working method, but not the best method.  Currently a new version of the Life of Trash tracking device is begin built and tested.  Using Arduino and cellular modules, this new device will be smaller and less toxic for the waste stream.</p>
+	<img style="display: block; margin-left: auto; margin-right: auto; margin-bottom: 20px;" src="http://farm6.staticflickr.com/5525/9354971134_c472d240f6.jpg" width="600">
+
+	<p class="lead" style="text-align:left; text-indent: 50px;">Currently the Arduino GSM Shield is being tested to determine nearby cell tower strength and location.  From this information, we can then triangulate where the device is located.  Using the AT+QENG? command is the secret weapon to get this information. </p>
+	<pre>	
+	void getLocation(){
+	
+	  int start = millis();
+	  while((millis() - start) < timeout_1){
+	    theGSM3ShieldV1ModemCore.theBuffer().flush();  
+	  }
+	  
+	  theGSM3ShieldV1ModemCore.println("AT+QENG?");  
+	  
+	  char temp_char;
+	  char resp_temp[20];
+	  int resp_counter = 0;
+	  int endline_counter = 0;
+	  int linenumberyouwant = 3;
+	  
+	  start = millis();
+	  while((millis() - start) < timeout_2) {
+	    if(theGSM3ShieldV1ModemCore.theBuffer().availableBytes() != 255) {
+	      temp_char = theGSM3ShieldV1ModemCore.theBuffer().read();
+	
+	      Serial.print(resp_counter);
+	      Serial.print(": ");
+	      Serial.println(resp_temp[resp_counter]); 
+	
+	      if (temp_char == 0x2B) {  
+	        Serial.print("end line character");
+	        endline_counter++; 
+	      }
+	      if (endline_counter == linenumberyouwant) {
+	          buffer[resp_counter] = temp_char;
+	          resp_counter++;
+	      }
+	    }
+	  } 
+	  
+	  sendSMS();	  
+	}
+	</pre>
+<br>
+<br>
+<p class="pull-left"><a href="/lab">Back to Trash Lab</a></p>
+</div>
