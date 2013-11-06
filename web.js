@@ -13,8 +13,8 @@ var client = new CartoDB({user:secret.USER, api_key:secret.API_KEY});
 
 // Twilio
 var Twilio = require('twilio-js');
-Twilio.AccountSid = "ACad716cc4da934be6ad19bf5353312248";
-Twilio.AuthToken  = "3af91684fa2d040f587bf96955cffd82";
+Twilio.AccountSid = process.env.Twilio_AccountSid;
+Twilio.AuthToken  = process.env.Twilio_AuthToken;
 
 var express = require('express'),
     app = express.createServer();
